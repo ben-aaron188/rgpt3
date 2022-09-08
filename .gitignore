@@ -1,2 +1,5 @@
 .Rproj.user
-
+.Rhistory
+.Rbuildignore
+.DS_Store
+.Rproj
