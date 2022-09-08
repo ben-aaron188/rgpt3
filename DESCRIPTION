@@ -1,0 +1,14 @@
+Package: rgpt3
+Title: An R access point for the GPT-3 API
+Version: 0.0.1
+Authors@R: 
+    person("Bennett", "Kleinberg",  email = "bennett.kleinberg@tilburguniversity.edu", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+URL: https://github.com/ben-aaron188/rgpt3
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports: 
+    data.table,
+    httr
