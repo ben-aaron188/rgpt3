@@ -1,7 +1,7 @@
 #' Makes a single completion request to the GPT-3 API
 #'
 #' @description
-#' `gpt3_single_request()` sends a single [completion request](https://beta.openai.com/docs/api-reference/completions) to the Open AI GPT-3 API.
+#' `gpt3_simple_request()` sends a single [completion request](https://beta.openai.com/docs/api-reference/completions) to the Open AI GPT-3 API.
 #' @details For a general guide on the completion requests, see [https://beta.openai.com/docs/guides/completion](https://beta.openai.com/docs/guides/completion). This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions) and reproduced below.
 #'
 #' For the `best_of` parameter: When used with n, best_of controls the number of candidate completions and n specifies how many to return – best_of must be greater than n. Note that this is handled by the wrapper automatically   if(best_of <= n){ best_of = n}.

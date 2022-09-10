@@ -55,7 +55,7 @@ If \code{output_type} is "text", only the data table in slot [\link{1}] is retur
 If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
 }
 \description{
-\code{gpt3_single_request()} sends a single \href{https://beta.openai.com/docs/api-reference/completions}{completion request} to the Open AI GPT-3 API.
+\code{gpt3_simple_request()} sends a single \href{https://beta.openai.com/docs/api-reference/completions}{completion request} to the Open AI GPT-3 API.
 }
 \details{
 For a general guide on the completion requests, see \url{https://beta.openai.com/docs/guides/completion}. This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on \url{https://beta.openai.com/docs/api-reference/completions} and reproduced below.

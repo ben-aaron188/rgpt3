@@ -2,5 +2,6 @@
 
 export(gpt3.test_request)
 export(gpt3_authenticate)
+export(gpt3_bunch_request)
 export(gpt3_simple_request)
 export(url.completions)
