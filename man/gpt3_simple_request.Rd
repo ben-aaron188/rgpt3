@@ -78,11 +78,19 @@ Parameters not included/supported:
 gpt3_simple_request(prompt_input = 'How old are you?')
 
 ## Instruct GPT-3 to write ten research ideas of max. 150 tokens with some controls:
-gpt3_simple_request(prompt_input = 'Write a research idea about using text data to understand human behaviour:', temperature = 0.8, n = 10, max_tokens = 150)
+gpt3_simple_request(prompt_input = 'Write a research idea about using text data to understand human behaviour:'
+   , temperature = 0.8
+   , n = 10
+   , max_tokens = 150)
 
 ## For fully reproducible results, we need `temperature = 0`, e.g.:
-gpt3_simple_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than', temperature = 0.0, max_tokens = 50)
+gpt3_simple_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+    , temperature = 0.0
+    , max_tokens = 50)
 
 ## The same example with a different GPT-3 model:
-gpt3_simple_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than', model = 'text-babbage-001', temperature = 0.0, max_tokens = 50)
+gpt3_simple_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+    , model = 'text-babbage-001'
+    , temperature = 0.0
+    , max_tokens = 50)
 }
