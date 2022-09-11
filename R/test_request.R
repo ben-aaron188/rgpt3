@@ -12,7 +12,7 @@ gpt3_test_request = function(verbose=F){
   check_apikey_form()
 
   test_prompt = 'Write a story about R Studio:'
-  test_outout = gpt3_make_request(prompt_ = test_prompt
+  test_outout = gpt3_single_request(prompt_ = test_prompt
                                   , max_tokens = 100)
   print(paste0('.. test successful ..'))
 
