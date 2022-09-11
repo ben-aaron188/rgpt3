@@ -58,13 +58,13 @@ If \code{output_type} is "text", only the data table in slot [\link{1}] is retur
 If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
 }
 \description{
-\code{gpt3_bunch_request()} is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{gpt3_simple_request()} function to allow for bunch processing of requests to the Open AI GPT-3 API.
+\code{gpt3_bunch_request()} is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{gpt3_make_request()} function to allow for bunch processing of requests to the Open AI GPT-3 API.
 }
 \details{
 The easiest (and intended) use case for this function is to create a data.frame or data.table with variables that contain the prompts to be requested from GPT-3 and a prompt id (see examples below).
 For a general guide on the completion requests, see \url{https://beta.openai.com/docs/guides/completion}. This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on \url{https://beta.openai.com/docs/api-reference/completions} and reproduced below.
 
-For the \code{best_of} parameter: The \code{gpt3_simple_request()} (which is used here in a vectorised manner) handles the issue that best_of must be greater than n by setting if(best_of <= n){ best_of = n}.
+For the \code{best_of} parameter: The \code{gpt3_make_request()} (which is used here in a vectorised manner) handles the issue that best_of must be greater than n by setting \code{if(best_of <= n){ best_of = n}}.
 
 If \code{id_var} is not provided, the function will use \code{prompt_1} ... \code{prompt_n} as id variable.
 
