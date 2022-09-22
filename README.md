@@ -40,6 +40,16 @@ Once the package is installed, you will typically run this work flow:
 
 Get the path to your access key file and run the authentication with: `gpt3_authenticate("PATHTO/access_key.txt")`
 
+**Make the test request:**
+
+You can run the test function below, which sends a simple request (here: the instruction to "Write a story about R Studio:") to the API and returns the output in the format used in this package (i.e., list[[1]] --> prompt and output, list[[2]] = meta information).
+
+```{r}
+gpt3_test_request()
+```
+
+
+
 
 **Interact with GPT-3 via requests:**
 

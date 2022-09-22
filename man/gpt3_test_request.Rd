@@ -4,10 +4,10 @@
 \alias{gpt3_test_request}
 \title{Make a test request to the GPT-3 API}
 \usage{
-gpt3_test_request(verbose = F)
+gpt3_test_request(verbose = T)
 }
 \arguments{
-\item{verbose}{(boolean) if TRUE prints the actual prompt and GPT-3 completion of the test request (default: FALSE).}
+\item{verbose}{(boolean) if TRUE prints the actual prompt and GPT-3 completion of the test request (default: TRUE).}
 }
 \value{
 A message of success or failure of the connection.
