@@ -30,6 +30,7 @@ The easiest way to use the package (before its CRAN release) is:
 
 ```{r}
 devtools::install_github("ben-aaron188/rgpt3")
+library(rgpt3)
 ```
 
 4. Run the test workflow
