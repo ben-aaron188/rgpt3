@@ -1,5 +1,5 @@
 Package: rgpt3
-Title: Make requests to the GPT-3 API
+Title: Making requests from R to the GPT-3 API
 Version: 0.0.2
 Authors@R: 
     person("Bennett", "Kleinberg",  email = "bennett.kleinberg@tilburguniversity.edu", role = c("aut", "cre"))
