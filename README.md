@@ -49,6 +49,19 @@ gpt3_test_request()
 ```
 
 
+## Core functions
+
+`rgpt3` currently is structured into the following functions:
+
+- Making requests (i.e. prompting the model)
+    - single requests: `gpt3_single_request()`
+    - make multiple prompt-based requests from a source data.frame or data.table: `gpt3_requests()`
+- Obtain embeddings
+    - obtain embeddings for a single text input: `gpt3_single_embedding`
+    - obtain embeddings for multiple texts from a source data.frame or data.table: `gpt3_embeddings()`
+
+## Examples
+
 
 
 **Interact with GPT-3 via requests:**
@@ -68,21 +81,15 @@ test_output = gpt3_single_request(prompt_input = 'Write a cynical text about hum
 The returned list contains the actual instruction + output in `test_output[[1]]` and meta information about your request in `test_output[[2]]`.
 
 
-
-
-## Core functions
-
-
-## Examples
-
-
-
-
 ## Cautionary note
 
+**Read this:** using GPT-3 is not free, so any interaction with the GPT-3 model(s) is counted towards you token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
+
+You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model. Once you token quota nears its end, Open AI will let you know. Your usage is tracable in your Open AI account dashboard.
 
 
 ## Contributing
+
 
 
 ## Support
