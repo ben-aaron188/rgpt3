@@ -99,7 +99,7 @@ my_prompts = data.frame('prompts' =
                             , 'Which colour is better and why? Red or blue?')
                         ,'prompt_id' = c(LETTERS[1:3]))
 
-example_1 = gpt3_requests(prompt_var = my_prompts$prompts
+example_2 = gpt3_requests(prompt_var = my_prompts$prompts
               , id_var = my_prompts$prompt_id
               , param_model = 'text-curie-001'
               , param_max_tokens = 100
@@ -150,12 +150,6 @@ dim(multiple_embeddings)
 
 
 
-
-
-### Obtaining embeddings
-
-
-
 ## Cautionary note
 
 **Read this:** using GPT-3 is not free, so any interaction with the GPT-3 model(s) is counted towards you token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
@@ -163,13 +157,13 @@ dim(multiple_embeddings)
 You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model. Once you token quota nears its end, Open AI will let you know. Your usage is tracable in your Open AI account dashboard.
 
 
-## Contributing
+## Support and contributions
 
+If you have questions or problems, please raise an issue on GitHub.
 
-
-## Support
+You are free to make contributions to the package via pull requests. If you do so, you agree that your contributions will be licensed under the [GNU General Public License v3.0](https://github.com/ben-aaron188/rgpt3/blob/main/LICENSE.md).
 
 
 ## Citation
 
-
+(tbd)
