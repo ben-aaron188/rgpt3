@@ -63,6 +63,8 @@ gpt3_test_request()
 
 The basic principle is that you can (and should) best use the more extensible `gpt3_requests()` and `gpt3_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
 
+This R package gives you full control over the parameters that the API contains. You can find these in detail in the package documentation and help files (e.g., `?gpt3_requests`) on the Open AI website for [completion requests](https://beta.openai.com/docs/api-reference/completions/create) and [embeddings](https://beta.openai.com/docs/api-reference/embeddings/create).
+
 ## Examples
 
 The examples below illustrate all functions of the package.
