@@ -110,7 +110,7 @@ function parameters is provided in the help files (e.g.,
 The `output` object contains a list with two data.tables: the text
 generations and the meta information about the request made.
 
-```{r eval=F, echo=T}
+```R
 prompt_data = data.frame(prompts = c('How does the US election work?'
                                      , 'Write a diary entry of a professional athlete: '
                                      , 'Maria has started a job as a ')
@@ -130,7 +130,7 @@ document can help, for example, to calculate the similarity between two
 pieces of text. Embeddings can be derived as follows (using the
 package-provided mini `travel_blog_data` dataset):
 
-```{r eval=F, echo=T}
+```R
 data("travel_blog_data")
 
 example_data = travel_blog_data[1:5, ]
