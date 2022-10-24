@@ -62,7 +62,7 @@ gpt3_embeddings = function(input_var
 
   }
 
-  output_data = rbindlist(empty_list)
+  output_data = data.table::rbindlist(empty_list)
 
   return(output_data)
 

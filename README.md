@@ -113,7 +113,7 @@ example_2 = gpt3_completions(prompt_var = my_prompts$prompts
               , param_temperature = 0.4)
 ```
 
-
+Note that this completion request produced 5 (`param_n = 5`) completions for each of the three prompts, so a total of 15 completions.
 
 
 ### Embeddings
@@ -134,7 +134,7 @@ We can ask the model to retrieve embeddings for [text similarity](https://beta.o
 ```{r}
 # we just take the first text here as a single text example
 my_text = travel_blog_data$gpt3[1]
-my_embeddings = gpt3_embeddings(input_var = my_text)
+my_embeddings = gpt3_single_embedding(input = my_text)
 length(my_embeddings)
 # 1024 (since the default model uses the 1024-dimensional Ada embeddings model)
 
@@ -160,7 +160,7 @@ dim(multiple_embeddings)
 
 **Read this:** using GPT-3 is not free, so any interaction with the GPT-3 model(s) is counted towards you token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
 
-You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model. Once you token quota nears its end, Open AI will let you know. Your usage is tracable in your Open AI account dashboard.
+You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model. Once your token quota nears its end, Open AI will let you know. Your usage is traceable in your Open AI account dashboard.
 
 
 ## Support and contributions
