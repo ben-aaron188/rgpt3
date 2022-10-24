@@ -28,12 +28,11 @@ editor_options:
 
 The past decade has seen leap advancements in the field of Natural
 Language Processing (NLP, i.e., using computational methods to study
-human language). Of particular importance are generative language models
-which - among standard NLP tasks such as text classification - are able
+human language). Of particular importance are generative language models, which - among standard NLP tasks such as text classification - are able
 to produce text data that are often indistinguishable from human-written
-text. The most prominent language model is GPT-3 (short for: Generative
+text. The most prominent language model is GPT-3 (short for Generative
 Pre-trained Transformer 3) developed by Open AI and released to the
-public in 2021 [@brown2020language]. While these models offer an
+public in 2021 [@brown2020language]. While these models offer 
 exciting potential for the study of human language at scale, models such
 as GPT-3 were also met with controversy [@bender2021dangers]. Part of
 the criticism stems from the opaque nature of the model and the
@@ -47,7 +46,7 @@ model.
 
 # Statement of need
 
-The GPT-3 model has pushed the boundaries the language abilities of
+The GPT-3 model has pushed the boundaries of the language abilities of
 artificially intelligent systems. Many tasks that were deemed
 unrealistic or too difficult for computational models are now deemed
 solvable [@vandermaas2021]. Especially the performances of the model on
@@ -57,11 +56,11 @@ everyday objects (e.g., a fork), the GPT-3 model produced alternative
 uses of the objects that were rated of higher utility (but lower
 originality and surprise) than creative use cases produced by human
 participants [@stevenson2022putting]. Others found that the GPT-3 model
-shows verbal behaviour similar to humans on cognitive tasks so much so
+shows verbal behaviour similar to humans on cognitive tasks, so much so
 that the model made the same intuitive mistakes that are observed in
 humans [@binz2022using]. Aside from these efforts to understand *how the
 model thinks*, others started to understand the personality that may be
-represented by the model. Asked to fill-in a standard personality
+represented by the model. Asked to fill in a standard personality
 questionnaire and a human values survey, the GPT-3 model showed a
 response pattern comparable with human samples and showed evidence of
 favouring specific values over others (e.g., self-direction \>
@@ -101,14 +100,14 @@ finish (e.g., 'Maria has started a job as a').
 This package handles completions in the most efficient manner from a
 data.table or data.frame object with the `gpt3_completions()` function.
 In the example, we provide the prompts from a data.frame and ask the
-function to produce 5 completions (via the `param_n` parameter) with a
+function to produce five completions (via the `param_n` parameter) with a
 maximum token length each of 50 (`param_max_tokens`) with a sampling
 temperature of 0.8 (`param_temperature`). Full detail on all available
 function parameters is provided in the help files (e.g.,
 `?gpt3_completions`)
 
 The `output` object contains a list with two data.tables: the text
-generations and the meta information about the request made.
+generations and the meta-information about the request made.
 
 ```R
 prompt_data = data.frame(prompts = c('How does the US election work?'
