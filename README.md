@@ -46,7 +46,7 @@ Get the path to your access key file and run the authentication with: `gpt3_auth
 You can run the test function below, which sends a simple request (here: the instruction to "Write a story about R Studio:") to the API and returns the output in the format used in this package (i.e., `list[[1]]` --> prompt and output, `list[[2]]` = meta information).
 
 ```{r}
-gpt3_test_request()
+gpt3_test_completion()
 ```
 
 
@@ -55,15 +55,18 @@ gpt3_test_request()
 `rgpt3` currently is structured into the following functions:
 
 - Making requests (i.e. prompting the model)
-    - single requests: `gpt3_single_request()`
-    - make multiple prompt-based requests from a source data.frame or data.table: `gpt3_requests()`
+    - single requests: `gpt3_single_completion()`
+    - make multiple prompt-based requests from a source data.frame or data.table: `gpt3_completions()`
 - Obtain embeddings
     - obtain embeddings for a single text input: `gpt3_single_embedding`
     - obtain embeddings for multiple texts from a source data.frame or data.table: `gpt3_embeddings()`
 
-The basic principle is that you can (and should) best use the more extensible `gpt3_requests()` and `gpt3_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
+The basic principle is that you can (and should) best use the more extensible `gpt3_completions()` and `gpt3_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
 
-This R package gives you full control over the parameters that the API contains. You can find these in detail in the package documentation and help files (e.g., `?gpt3_requests`) on the Open AI website for [completion requests](https://beta.openai.com/docs/api-reference/completions/create) and [embeddings](https://beta.openai.com/docs/api-reference/embeddings/create).
+This R package gives you full control over the parameters that the API contains. You can find these in detail in the package documentation and help files (e.g., `?gpt3_completions`) on the Open AI website for [completion requests](https://beta.openai.com/docs/api-reference/completions/create) and [embeddings](https://beta.openai.com/docs/api-reference/embeddings/create).
+
+Note: this package enables you to use the core functionality of GPT-3 (making completion requests) and provides a function to obtain embeddings. There are additional functionalities in the core API such as fine-tuning models (i.e., providing labelled data to update/retrain the existing model) and asking GPT-3 to make edits to text input. These are not part of this package since the focus of making GPT-3 accessible from R is on the completion requests.
+
 
 ## Examples
 
@@ -82,7 +85,7 @@ Think of requests as instructions you give the to model. You may also hear the i
 This request "tells" GPT-3 to write a cynical text about human nature (five times) with a sampling temperature of 0.9, a maximium length of 100 tokens.
 
 ```{r}
-example_1 = gpt3_single_request(prompt_input = 'Write a cynical text about human nature:'
+example_1 = gpt3_single_completion(prompt_input = 'Write a cynical text about human nature:'
                     , temperature = 0.9
                     , max_tokens = 100
                     , n = 5)
@@ -93,7 +96,7 @@ The returned list contains the actual instruction + output in `example_1[[1]]` a
 
 **Example 2: multiple prompts**
 
-We can extend the example and make multiple requests by using a data.frame / data.table as input for the `gpt3_requests()` function:
+We can extend the example and make multiple requests by using a data.frame / data.table as input for the `gpt3_completions()` function:
 
 ```{r}
 my_prompts = data.frame('prompts' = 
@@ -102,7 +105,7 @@ my_prompts = data.frame('prompts' =
                             , 'Which colour is better and why? Red or blue?')
                         ,'prompt_id' = c(LETTERS[1:3]))
 
-example_2 = gpt3_requests(prompt_var = my_prompts$prompts
+example_2 = gpt3_completions(prompt_var = my_prompts$prompts
               , id_var = my_prompts$prompt_id
               , param_model = 'text-curie-001'
               , param_max_tokens = 100

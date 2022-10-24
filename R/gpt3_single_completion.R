@@ -1,7 +1,7 @@
 #' Makes a single completion request to the GPT-3 API
 #'
 #' @description
-#' `gpt3_single_request()` sends a single [completion request](https://beta.openai.com/docs/api-reference/completions) to the Open AI GPT-3 API.
+#' `gpt3_single_completion()` sends a single [completion request](https://beta.openai.com/docs/api-reference/completions) to the Open AI GPT-3 API.
 #' @details For a general guide on the completion requests, see [https://beta.openai.com/docs/guides/completion](https://beta.openai.com/docs/guides/completion). This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions) and reproduced below.
 #'
 #' For the `best_of` parameter: When used with n, best_of controls the number of candidate completions and n specifies how many to return – best_of must be greater than n. Note that this is handled by the wrapper automatically   if(best_of <= n){ best_of = n}.
@@ -36,26 +36,26 @@
 #' # Once authenticated:
 #'
 #' ## Simple request with defaults:
-#' gpt3_single_request(prompt_input = 'How old are you?')
+#' gpt3_single_completion(prompt_input = 'How old are you?')
 #'
 #' ## Instruct GPT-3 to write ten research ideas of max. 150 tokens with some controls:
-#'gpt3_single_request(prompt_input = 'Write a research idea about using text data to understand human behaviour:'
+#'gpt3_single_completion(prompt_input = 'Write a research idea about using text data to understand human behaviour:'
 #'    , temperature = 0.8
 #'    , n = 10
 #'    , max_tokens = 150)
 #'
 #' ## For fully reproducible results, we need `temperature = 0`, e.g.:
-#' gpt3_single_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+#' gpt3_single_completion(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
 #'     , temperature = 0.0
 #'     , max_tokens = 50)
 #'
 #' ## The same example with a different GPT-3 model:
-#' gpt3_single_request(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+#' gpt3_single_completion(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
 #'     , model = 'text-babbage-001'
 #'     , temperature = 0.0
 #'     , max_tokens = 50)
 #' @export
-gpt3_single_request = function(prompt_input
+gpt3_single_completion = function(prompt_input
                               , model = 'text-davinci-002'
                               , output_type = 'complete'
                               , suffix = NULL

@@ -1,12 +1,12 @@
 #' Makes bunch completion requests to the GPT-3 API
 #'
 #' @description
-#' `gpt3_requests()` is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the `gpt3_single_request()` function to allow for bunch processing of requests to the Open AI GPT-3 API.
+#' `gpt3_completions()` is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the `gpt3_single_completion()` function to allow for bunch processing of requests to the Open AI GPT-3 API.
 #' @details
 #' The easiest (and intended) use case for this function is to create a data.frame or data.table with variables that contain the prompts to be requested from GPT-3 and a prompt id (see examples below).
 #' For a general guide on the completion requests, see [https://beta.openai.com/docs/guides/completion](https://beta.openai.com/docs/guides/completion). This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions) and reproduced below.
 #'
-#' For the `best_of` parameter: The `gpt3_single_request()` (which is used here in a vectorised manner) handles the issue that best_of must be greater than n by setting `if(best_of <= n){ best_of = n}`.
+#' For the `best_of` parameter: The `gpt3_single_completion()` (which is used here in a vectorised manner) handles the issue that best_of must be greater than n by setting `if(best_of <= n){ best_of = n}`.
 #'
 #' If `id_var` is not provided, the function will use `prompt_1` ... `prompt_n` as id variable.
 #'
@@ -41,30 +41,30 @@
 #' # Once authenticated:
 #' # Assuming you have a data.table with 3 different prompts:
 #' dt_prompts = data.table::data.table('prompts' = c('What is the meaning if life?', 'Write a tweet about London:', 'Write a research proposal for using AI to fight fake news:'), 'prompt_id' = c(LETTERS[1:3]))
-#'gpt3_requests(prompt_var = dt_prompts$prompts
+#'gpt3_completions(prompt_var = dt_prompts$prompts
 #'    , id_var = dt_prompts$prompt_id)
 #'
 #' ## With more controls
-#'gpt3_requests(prompt_var = dt_prompts$prompts
+#'gpt3_completions(prompt_var = dt_prompts$prompts
 #'    , id_var = dt_prompts$prompt_id
 #'    , param_max_tokens = 50
 #'    , param_temperature = 0.5
 #'    , param_n = 5)
 #'
 #' ## Reproducible example (deterministic approach)
-#'gpt3_requests(prompt_var = dt_prompts$prompts
+#'gpt3_completions(prompt_var = dt_prompts$prompts
 #'    , id_var = dt_prompts$prompt_id
 #'    , param_max_tokens = 50
 #'    , param_temperature = 0.0)
 #'
 #' ## Changing the GPT-3 model
-#'gpt3_requests(prompt_var = dt_prompts$prompts
+#'gpt3_completions(prompt_var = dt_prompts$prompts
 #'    , id_var = dt_prompts$prompt_id
 #'    , param_model = 'text-babbage-001'
 #'    , param_max_tokens = 50
 #'    , param_temperature = 0.4)
 #' @export
-gpt3_requests = function(prompt_var
+gpt3_completions = function(prompt_var
                               , id_var
                               , param_output_type = 'complete'
                               , param_model = 'text-davinci-002'
@@ -93,7 +93,7 @@ gpt3_requests = function(prompt_var
 
     print(paste0('Request: ', i, '/', data_length))
 
-    row_outcome = gpt3_single_request(prompt_input = prompt_var[i]
+    row_outcome = gpt3_single_completion(prompt_input = prompt_var[i]
                                       , model = param_model
                                       , output_type = 'complete'
                                       , suffix = param_suffix
