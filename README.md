@@ -158,9 +158,9 @@ dim(multiple_embeddings)
 
 ## Cautionary note
 
-**Read this:** using GPT-3 is not free, so any interaction with the GPT-3 model(s) is counted towards you token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
+**Read this:** using GPT-3 is not free, so any interaction with the GPT-3 model(s) is counted towards your token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
 
-You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model. Once your token quota nears its end, Open AI will let you know. Your usage is traceable in your Open AI account dashboard.
+You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model(s). Once your token quota nears its end, Open AI will let you know. Your usage is traceable in your Open AI account dashboard.
 
 
 ## Support and contributions
@@ -172,4 +172,4 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Citation
 
-(tbd)
+See "Cite this repository" on the right-hand side.
