@@ -7,7 +7,7 @@ tags:
 - language models
 - text generation
 - embeddings
-date: "23 October 2022"
+date: "15 November 2022"
 output: pdf_document
 authors:
 - name: Bennett Kleinberg
@@ -120,6 +120,7 @@ output = gpt3_completions(prompt_var = prompt_data$prompts
                  , param_n = 5
                  , param_temperature = 0.8)
 ```
+
 
 ## Embeddings
 
