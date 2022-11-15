@@ -1,3 +1,5 @@
+[![status](https://joss.theoj.org/papers/6b9ecb9c502241c43624d2c2b11c7b71/status.svg)](https://joss.theoj.org/papers/6b9ecb9c502241c43624d2c2b11c7b71)
+
 # `rgpt3` 
 
 **Making requests from R to the GPT-3 API**
