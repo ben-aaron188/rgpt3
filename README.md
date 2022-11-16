@@ -1,4 +1,4 @@
-[![status](https://joss.theoj.org/papers/6b9ecb9c502241c43624d2c2b11c7b71/status.svg)](https://joss.theoj.org/papers/6b9ecb9c502241c43624d2c2b11c7b71)
+[![DOI](https://zenodo.org/badge/533971880.svg)](https://zenodo.org/badge/latestdoi/533971880)
 
 # `rgpt3` 
 
