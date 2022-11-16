@@ -175,13 +175,15 @@ You are free to make contributions to the package via pull requests. If you do s
 ## Citation
 
 ```
-@software{Kleinberg_rgpt3_Making_requests_2022
-    ,author = {Kleinberg, Bennett}
-    ,month = {10}
-    ,title = {{rgpt3: Making requests from R to the GPT-3 API}}
-    ,url = {https://github.com/ben-aaron188/rgpt3}
-    ,version = {0.2.1}
-    ,year = {2022}}
+@software{Kleinberg_rgpt3_Making_requests_2022,
+author = {Kleinberg, Bennett},
+doi = {10.5281/zenodo.7327667},
+month = {11},
+title = {{rgpt3: Making requests from R to the GPT-3 API}},
+url = {https://github.com/ben-aaron188/rgpt3},
+version = {0.3},
+year = {2022}
+}
 ```
 
 See also "Cite this repository" on the right-hand side.
