@@ -5,7 +5,7 @@
 **Making requests from R to the GPT-3 API**
 
 
-
+_Note: this is a "community-maintained” package (i.e., not the official one). For the official OpenAI libraries (python and node.js endpoints), go to [https://beta.openai.com/docs/libraries/python-bindings](https://beta.openai.com/docs/libraries/python-bindings)_
 
 ## Getting started
 
