@@ -6,7 +6,7 @@
 \usage{
 gpt3_single_completion(
   prompt_input,
-  model = "text-davinci-002",
+  model = "text-davinci-003",
   output_type = "complete",
   suffix = NULL,
   max_tokens = 100,
@@ -23,7 +23,7 @@ gpt3_single_completion(
 \arguments{
 \item{prompt_input}{character that contains the prompt to the GPT-3 request}
 
-\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of "text-davinci-002" (default), "text-curie-001", "text-babbage-001" or "text-ada-001"}
+\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of "text-davinci-003" (default), "text-davinci-002", "text-davinci-001", "text-curie-001", "text-babbage-001" or "text-ada-001"}
 
 \item{output_type}{character determining the output provided: "complete" (default), "text" or "meta"}
 

@@ -171,6 +171,10 @@ If you have questions or problems, please raise an issue on GitHub.
 
 You are free to make contributions to the package via pull requests. If you do so, you agree that your contributions will be licensed under the [GNU General Public License v3.0](https://github.com/ben-aaron188/rgpt3/blob/main/LICENSE.md).
 
+## Changelog/updates
+
+- [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
+
 
 ## Citation
 

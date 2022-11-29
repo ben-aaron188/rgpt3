@@ -8,7 +8,7 @@ gpt3_completions(
   prompt_var,
   id_var,
   param_output_type = "complete",
-  param_model = "text-davinci-002",
+  param_model = "text-davinci-003",
   param_suffix = NULL,
   param_max_tokens = 100,
   param_temperature = 0.9,
@@ -28,7 +28,7 @@ gpt3_completions(
 
 \item{param_output_type}{character determining the output provided: "complete" (default), "text" or "meta"}
 
-\item{param_model}{a character vector that indicates the \href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of "text-davinci-002" (default), "text-curie-001", "text-babbage-001" or "text-ada-001"}
+\item{param_model}{a character vector that indicates the \href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of "text-davinci-003" (default), "text-davinci-002", "text-davinci-001", "text-curie-001", "text-babbage-001" or "text-ada-001"}
 
 \item{param_suffix}{character (default: NULL) (from the official API documentation: \emph{The suffix that comes after a completion of inserted text})}
 

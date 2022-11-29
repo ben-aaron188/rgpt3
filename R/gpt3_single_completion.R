@@ -12,7 +12,7 @@
 #'   - `stream`: [https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream](https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream)
 #'
 #' @param prompt_input character that contains the prompt to the GPT-3 request
-#' @param model a character vector that indicates the [model](https://beta.openai.com/docs/models/gpt-3) to use; one of "text-davinci-002" (default), "text-curie-001", "text-babbage-001" or "text-ada-001"
+#' @param model a character vector that indicates the [model](https://beta.openai.com/docs/models/gpt-3) to use; one of "text-davinci-003" (default), "text-davinci-002", "text-davinci-001", "text-curie-001", "text-babbage-001" or "text-ada-001"
 #' @param output_type character determining the output provided: "complete" (default), "text" or "meta"
 #' @param suffix character (default: NULL) (from the official API documentation: _The suffix that comes after a completion of inserted text_)
 #' @param max_tokens numeric (default: 100) indicating the maximum number of tokens that the completion request should return (from the official API documentation: _The maximum number of tokens to generate in the completion. The token count of your prompt plus max_tokens cannot exceed the model's context length. Most models have a context length of 2048 tokens (except for the newest models, which support 4096)_)
@@ -56,7 +56,7 @@
 #'     , max_tokens = 50)
 #' @export
 gpt3_single_completion = function(prompt_input
-                              , model = 'text-davinci-002'
+                              , model = 'text-davinci-003'
                               , output_type = 'complete'
                               , suffix = NULL
                               , max_tokens = 100
