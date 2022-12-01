@@ -25,6 +25,7 @@ Your access workflow for this package retrieves your API key from a local file. 
 
 The path to that file (e.g. `/Users/me/directory1/access_key.txt`) is needed for the `gpt3_authenticate()` function (see below).
 
+When using a version control workflow, make sure `access_key.txt` is in the `.gitignore` file (i.e., so your access code is not visible on a GitHub repo). If you use the package without any version control, you do not need to set a `.gitignore` file.
 
 3. Install the `rgpt3` package
 
