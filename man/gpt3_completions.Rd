@@ -40,7 +40,7 @@ gpt3_completions(
 
 \item{param_n}{numeric (default: 1) specifying the number of completions per request (from the official API documentation: \emph{How many completions to generate for each prompt. \strong{Note: Because this parameter generates many completions, it can quickly consume your token quota.} Use carefully and ensure that you have reasonable settings for max_tokens and stop.})}
 
-\item{param_logprobs}{numeric (default: NULL) (from the official API documentation: \emph{Include the log probabilities on the logprobs most likely tokens, as well the chosen tokens. For example, if logprobs is 5, the API will return a list of the 5 most likely tokens. The API will always return the logprob of the sampled token, so there may be up to logprobs+1 elements in the response. The maximum value for logprobs is 5. If you need more than this, please contact support@openai.com and describe your use case.})}
+\item{param_logprobs}{numeric (default: NULL) (from the official API documentation: \emph{Include the log probabilities on the logprobs most likely tokens, as well the chosen tokens. For example, if logprobs is 5, the API will return a list of the 5 most likely tokens. The API will always return the logprob of the sampled token, so there may be up to logprobs+1 elements in the response. The maximum value for logprobs is 5. If you need more than this, please go to \url{https://help.openai.com/en/} and describe your use case.})}
 
 \item{param_stop}{character or character vector (default: NULL) that specifies after which character value when the completion should end (from the official API documentation: \emph{Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.})}
 
