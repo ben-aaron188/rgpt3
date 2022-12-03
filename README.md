@@ -175,6 +175,7 @@ You are free to make contributions to the package via pull requests. If you do s
 ## Changelog/updates
 
 - [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
+- [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
 
 
 ## Citation

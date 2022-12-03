@@ -115,8 +115,15 @@ gpt3_completions = function(prompt_var
 
   }
 
-  bunch_core_output = data.table::rbindlist(empty_list)
-  bunch_meta_output = data.table::rbindlist(meta_list)
+
+  bunch_core_output = try(data.table::rbindlist(empty_list), silent = T)
+  if("try-error" %in% class(bunch_core_output)){
+    bunch_core_output = data.table::rbindlist(empty_list, fill = T)
+  }
+  bunch_meta_output = try(data.table::rbindlist(meta_list), silent = T)
+  if("try-error" %in% class(bunch_meta_output)){
+    bunch_meta_output = data.table::rbindlist(meta_list, fill = T)
+  }
 
   if(param_output_type == 'complete'){
     output = list(bunch_core_output

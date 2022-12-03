@@ -99,6 +99,7 @@ gpt3_single_completion = function(prompt_input
                             , encode = "json")
 
   request_content = httr::content(request_base)
+  # request_content = httr::content(request_base, encoding = "Latin-ASCII")
 
   if(n == 1){
     core_output = data.table::data.table('n' = 1
