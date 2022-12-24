@@ -176,6 +176,7 @@ You are free to make contributions to the package via pull requests. If you do s
 
 - [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
 - [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
+- [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
 
 
 ## Citation
@@ -184,10 +185,10 @@ You are free to make contributions to the package via pull requests. If you do s
 @software{Kleinberg_rgpt3_Making_requests_2022,
     author = {Kleinberg, Bennett},
     doi = {10.5281/zenodo.7327667},
-    month = {11},
+    month = {12},
     title = {{rgpt3: Making requests from R to the GPT-3 API}},
     url = {https://github.com/ben-aaron188/rgpt3},
-    version = {0.3},
+    version = {0.3.1},
     year = {2022}
 }
 ```

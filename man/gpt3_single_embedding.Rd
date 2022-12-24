@@ -4,12 +4,12 @@
 \alias{gpt3_single_embedding}
 \title{Obtains text embeddings for a single character (string) from the GPT-3 API}
 \usage{
-gpt3_single_embedding(input, model = "text-similarity-ada-001")
+gpt3_single_embedding(input, model = "text-embedding-ada-002")
 }
 \arguments{
 \item{input}{character that contains the text for which you want to obtain text embeddings from the GPT-3 model}
 
-\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/similarity-embeddings}{similarity embedding model}; one of "text-similarity-ada-001" (default), "text-similarity-curie-001", "text-similarity-babbage-001", "text-similarity-davinci-001"}
+\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/similarity-embeddings}{similarity embedding model}; one of "text-embedding-ada-002" (default), "text-similarity-ada-001", "text-similarity-curie-001", "text-similarity-babbage-001", "text-similarity-davinci-001". Note: it is strongly recommend to use the faster, cheaper and higher quality second generation embeddings model "text-embedding-ada-002".}
 }
 \value{
 A numeric vector (= the embedding vector)
@@ -20,6 +20,7 @@ A numeric vector (= the embedding vector)
 \details{
 The function supports the text similarity embeddings for the four GPT-3 models as specified in the parameter list. The main difference between the four models is the sophistication of the embedding representation as indicated by the vector embedding size.
 \itemize{
+\item Second-generation embeddings model \code{text-embedding-ada-002} (1536 dimensions)
 \item Ada (1024 dimensions)
 \item Babbage (2048 dimensions)
 \item Curie (4096 dimensions)

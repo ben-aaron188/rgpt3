@@ -1,6 +1,6 @@
 Package: rgpt3
 Title: Making requests from R to the GPT-3 API
-Version: 0.3
+Version: 0.3.1
 Authors@R: 
     person("Bennett", "Kleinberg",  email = "bennett.kleinberg@tilburguniversity.edu", role = c("aut", "cre"))
 Description: With this package you can interact with the powerful GPT-3 models in two ways: making requests for completions (e.g., ask GPT-3 to write a novel, classify text, answer questions, etc.) and retrieving text embeddings representations (i.e., obtain a low-dimensional vector representation that allows for downstream analyses). You need to authenticate with your own Open AI API key and all requests you make count towards you token quota. For completion requests and embeddings requests, two functions each allow you to send either sinlge requests (`gpt3_single_request()` and `gpt3_single_embedding()`) or send bunch requests where the vectorised structure is used (`gpt3_requests()` and `gpt3_embeddings()`).
