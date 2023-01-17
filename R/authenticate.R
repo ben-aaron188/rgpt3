@@ -27,7 +27,7 @@
 #' @export
 gpt3_authenticate = function(path){
   apikey_ = readLines(path)
-  pkg.env$api_key <<- apikey_
+  pkg.env$api_key = apikey_
   print(paste0("Will use --> ", pkg.env$api_key, " for authentication."))
 }
 
