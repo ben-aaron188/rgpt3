@@ -3,7 +3,8 @@
 \docType{data}
 \name{price_base_davinci}
 \alias{price_base_davinci}
-\title{Contains the pricing for completion requests (see: \url{https://openai.com/api/pricing/#faq-completions-pricing})}
+\title{Contains the pricing for completion requests (see:
+\url{https://openai.com/api/pricing/#faq-completions-pricing})}
 \format{
 An object of class \code{numeric} of length 1.
 }
@@ -11,6 +12,8 @@ An object of class \code{numeric} of length 1.
 price_base_davinci
 }
 \description{
-These are the prices listed for 1k tokens of requests for the various models. These are needed for the \code{rgpt3_cost_estimate(...)} function.
+These are the prices listed for 1k tokens of requests for the
+various models. These are needed for the \code{rgpt3_cost_estimate(...)}
+function.
 }
 \keyword{datasets}

@@ -1,9 +1,8 @@
 #' Travel Blog Data (template)
 #'
-#' A subset of data from the World Health Organization Global Tuberculosis
-#' Report ...
+#' Here give some further info ...
 #'
-#' @format ## `who`
+#' @format ## `travel_blog_data`
 #' A data frame with 7,240 rows and 60 columns:
 #' \describe{
 #'   \item{country}{Country name}

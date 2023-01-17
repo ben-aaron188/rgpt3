@@ -7,13 +7,15 @@
 gpt3_test_completion(verbose = T)
 }
 \arguments{
-\item{verbose}{(boolean) if TRUE prints the actual prompt and GPT-3 completion of the test request (default: TRUE).}
+\item{verbose}{(boolean) if TRUE prints the actual prompt and GPT-3
+completion of the test request (default: TRUE).}
 }
 \value{
 A message of success or failure of the connection.
 }
 \description{
-\code{gpt3_test_completion()} sends a basic \href{https://beta.openai.com/docs/api-reference/completions}{completion request} to the Open AI GPT-3 API.
+\code{gpt3_test_completion()} sends a basic \href{https://beta.openai.com/docs/api-reference/completions}{completion request} to the
+Open AI GPT-3 API.
 }
 \examples{
 gpt3_test_completion()

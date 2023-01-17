@@ -129,7 +129,10 @@
 #'
 #' # Once authenticated:
 #' # Assuming you have a data.table with 3 different prompts:
-#' dt_prompts = data.table::data.table('prompts' = c('What is the meaning if life?', 'Write a tweet about London:', 'Write a research proposal for using AI to fight fake news:'), 'prompt_id' = c(LETTERS[1:3]))
+#' dt_prompts = data.table::data.table('prompts' =
+#' c('What is the meaning if life?', 'Write a tweet about London:',
+#' 'Write a research proposal for using AI to fight fake news:'),
+#' 'prompt_id' = c(LETTERS[1:3]))
 #'gpt3_completions(prompt_var = dt_prompts$prompts
 #'    , id_var = dt_prompts$prompt_id)
 #'

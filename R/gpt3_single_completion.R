@@ -23,14 +23,6 @@
 #'  [https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream](https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream)
 #'
 #'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
 #'@param prompt_input character that contains the prompt to the GPT-3 request
 #'@param model a character vector that indicates the
 #'  [model](https://beta.openai.com/docs/models/gpt-3) to use; one of
@@ -83,14 +75,6 @@
 #'  increasing the model's likelihood to talk about new topics._). See also:
 #'  [https://beta.openai.com/docs/api-reference/parameter-details](https://beta.openai.com/docs/api-reference/parameter-details)
 #'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
 #'@param frequency_penalty numeric (default: 0) between -2.00  and +2.00 to
 #'  determine the penalisation of repetitiveness based on the frequency of a
 #'  token in the text already (from the official API documentation: _Number
@@ -99,14 +83,6 @@
 #'  repeat the same line verbatim._). See also:
 #'  [https://beta.openai.com/docs/api-reference/parameter-details](https://beta.openai.com/docs/api-reference/parameter-details)
 #'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
 #'@param best_of numeric (default: 1) that determines the space of possibilities
 #'  from which to select the completion with the highest probability (from the
 #'  official API documentation: _Generates `best_of` completions server-side and
@@ -114,17 +90,17 @@
 #'  See details.
 #'
 #'@return A list with two data tables (if `output_type` is the default
-#'  "complete"): [[1]] contains the data table with the columns `n` (= the mo.
+#'  "complete"): `[[1]]` contains the data table with the columns `n` (= the mo.
 #'  of `n` responses requested), `prompt` (= the prompt that was sent), and
-#'  `gpt3` (= the completion as returned from the GPT-3 model). [[2]] contains
+#'  `gpt3` (= the completion as returned from the GPT-3 model). `[[2]]` contains
 #'  the meta information of the request, including the request id, the
 #'  parameters of the request and the token usage of the prompt
 #'  (`tok_usage_prompt`), the completion (`tok_usage_completion`) and the total
 #'  usage (`tok_usage_total`).
 #'
-#'  If `output_type` is "text", only the data table in slot [[1]] is returned.
+#'  If `output_type` is "text", only the data table in slot `[[1]]` is returned.
 #'
-#'  If `output_type` is "meta", only the data table in slot [[2]] is returned.
+#'  If `output_type` is "meta", only the data table in slot `[[2]]` is returned.
 #' @examples
 #' # First authenticate with your API key via `gpt3_authenticate('pathtokey')`
 #'
@@ -134,18 +110,21 @@
 #' gpt3_single_completion(prompt_input = 'How old are you?')
 #'
 #' ## Instruct GPT-3 to write ten research ideas of max. 150 tokens with some controls:
-#'gpt3_single_completion(prompt_input = 'Write a research idea about using text data to understand human behaviour:'
+#'gpt3_single_completion(prompt_input =
+#''Write a research idea about using text data to understand human behaviour:'
 #'    , temperature = 0.8
 #'    , n = 10
 #'    , max_tokens = 150)
 #'
 #' ## For fully reproducible results, we need `temperature = 0`, e.g.:
-#' gpt3_single_completion(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+#' gpt3_single_completion(prompt_input =
+#' 'Finish this sentence:/n There is no easier way to learn R than'
 #'     , temperature = 0.0
 #'     , max_tokens = 50)
 #'
 #' ## The same example with a different GPT-3 model:
-#' gpt3_single_completion(prompt_input = 'Finish this sentence:/n There is no easier way to learn R than'
+#' gpt3_single_completion(prompt_input =
+#' 'Finish this sentence:/n There is no easier way to learn R than'
 #'     , model = 'text-babbage-001'
 #'     , temperature = 0.0
 #'     , max_tokens = 50)

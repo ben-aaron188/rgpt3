@@ -7,29 +7,36 @@
 gpt3_single_embedding(input, model = "text-embedding-ada-002")
 }
 \arguments{
-\item{input}{character that contains the text for which you want to obtain text embeddings from the GPT-3 model}
+\item{input}{character that contains the text for which you want to obtain
+text embeddings from the GPT-3 model}
 
-\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/similarity-embeddings}{similarity embedding model}; one of "text-embedding-ada-002" (default), "text-similarity-ada-001", "text-similarity-curie-001", "text-similarity-babbage-001", "text-similarity-davinci-001". Note: it is strongly recommend to use the faster, cheaper and higher quality second generation embeddings model "text-embedding-ada-002".}
+\item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/similarity-embeddings}{similarity embedding model};
+one of "text-embedding-ada-002" (default), "text-similarity-ada-001",
+"text-similarity-curie-001", "text-similarity-babbage-001",
+"text-similarity-davinci-001". Note: it is strongly recommend to use the
+faster, cheaper and higher quality second generation embeddings model
+"text-embedding-ada-002".}
 }
 \value{
 A numeric vector (= the embedding vector)
 }
 \description{
-\code{gpt3_single_embedding()} sends a single \href{https://beta.openai.com/docs/guides/embeddings}{embedding request} to the Open AI GPT-3 API.
+\code{gpt3_single_embedding()} sends a single \href{https://beta.openai.com/docs/guides/embeddings}{embedding request} to the Open AI
+GPT-3 API.
 }
 \details{
-The function supports the text similarity embeddings for the four GPT-3 models as specified in the parameter list. The main difference between the four models is the sophistication of the embedding representation as indicated by the vector embedding size.
-\itemize{
-\item Second-generation embeddings model \code{text-embedding-ada-002} (1536 dimensions)
-\item Ada (1024 dimensions)
-\item Babbage (2048 dimensions)
-\item Curie (4096 dimensions)
-\item Davinci (12288 dimensions)
-}
+The function supports the text similarity embeddings for the four
+GPT-3 models as specified in the parameter list. The main difference
+between the four models is the sophistication of the embedding
+representation as indicated by the vector embedding size. -
+Second-generation embeddings model \code{text-embedding-ada-002} (1536
+dimensions) - Ada (1024 dimensions) - Babbage (2048 dimensions) - Curie
+(4096 dimensions) - Davinci (12288 dimensions)
 
 Note that the dimension size (= vector length), speed and \href{https://openai.com/api/pricing/}{associated costs} differ considerably.
 
-These vectors can be used for downstream tasks such as (vector) similarity calculations.
+These vectors can be used for downstream tasks such as (vector) similarity
+calculations.
 }
 \examples{
 # First authenticate with your API key via `gpt3_authenticate('pathtokey')`
@@ -37,10 +44,12 @@ These vectors can be used for downstream tasks such as (vector) similarity calcu
 # Once authenticated:
 
 ## Simple request with defaults:
-sample_string = "London is one of the most liveable cities in the world. The city is always full of energy and people. It's always a great place to explore and have fun."
+sample_string = "London is one of the most liveable cities in the world.
+The city is always full of energy and people. It's always a great place
+to explore and have fun."
 gpt3_single_embedding(input = sample_string)
 
 ## Change the model:
-#' gpt3_single_embedding(input = sample_string
-    , model = 'text-similarity-curie-001')
+gpt3_single_embedding(input = sample_string
+  , model = 'text-similarity-curie-001')
 }

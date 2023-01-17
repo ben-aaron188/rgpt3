@@ -44,8 +44,8 @@
 #' ## The data below were generated with the `gpt3_single_request()` function as follows:
 #' ##### DO NOT RUN #####
 #' # travel_blog_data = gpt3_single_request(prompt_input = "Write a travel blog
-#' about a dog's journey through the UK:", temperature = 0.8, n = 10, max_tokens
-#' = 200)[[1]]
+#' # about a dog's journey through the UK:", temperature = 0.8, n = 10, max_tokens
+#' # = 200)[[1]]
 #' ##### END DO NOT RUN #####
 #'
 #' # You can load these data with:

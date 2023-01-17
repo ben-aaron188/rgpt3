@@ -13,14 +13,27 @@ gpt3_authenticate(path)
 A confirmation message
 }
 \description{
-Access to GPT-3's functions requires an API key that you obtain from \url{https://openai.com/api/}. \code{gpt3_authenticate()} looks for your API key in a file that you provide the path to and ensures you can connect to the models. \code{gpt3_endsession()} overwrites your API key \emph{for this session} (it is recommended that you run this when you are done). \code{check_apikey_form()} is a simple check if any information has been provided at all.
+Access to GPT-3's functions requires an API key that you obtain
+from \url{https://openai.com/api/}.
+\code{gpt3_authenticate()} looks for your API key in a file that you provide the
+path to and ensures you can connect to the models. \code{gpt3_endsession()}
+overwrites your API key \emph{for this session} (it is recommended that you run
+this when you are done). \code{check_apikey_form()} is a simple check if any
+information has been provided at all.
 }
 \details{
-The easiest way to store you API key is in a \code{.txt} file with \emph{only} the API key in it (without quotation marks or other common string indicators). \code{gpt3_authenticate()} reads the single file you point it to and retrieves the content as authentication key for all requests.
+The easiest way to store you API key is in a \code{.txt} file with \emph{only}
+the API key in it (without quotation marks or other common string
+indicators). \code{gpt3_authenticate()} reads the single file you point it to
+and retrieves the content as authentication key for all requests.
 }
 \examples{
+
+\dontrun{
 # Starting a session:
 gpt3_authenticate(path = './YOURPATH/access_key.txt')
 # After you are finished:
 gpt3_endsession()
+}
+
 }

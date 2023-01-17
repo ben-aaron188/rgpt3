@@ -32,7 +32,9 @@
 #' # Once authenticated:
 #'
 #' ## Simple request with defaults:
-#' sample_string = "London is one of the most liveable cities in the world. The city is always full of energy and people. It's always a great place to explore and have fun."
+#' sample_string = "London is one of the most liveable cities in the world.
+#' The city is always full of energy and people. It's always a great place
+#' to explore and have fun."
 #' gpt3_single_embedding(input = sample_string)
 #'
 #' ## Change the model:
