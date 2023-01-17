@@ -30,11 +30,11 @@
 #' @param param_frequency_penalty numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: _Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim._). See also: [https://beta.openai.com/docs/api-reference/parameter-details](https://beta.openai.com/docs/api-reference/parameter-details)
 #' @param param_best_of numeric (default: 1) that determines the space of possibilities from which to select the completion with the highest probability (from the official API documentation: _Generates `best_of` completions server-side and returns the "best" (the one with the highest log probability per token)_). See details.
 #'
-#' @return A list with two data tables (if `param_output_type` is the default "complete"): [[1]] contains the data table with the columns `n` (= the mo. of `n` responses requested), `prompt` (= the prompt that was sent), `gpt3` (= the completion as returned from the GPT-3 model) and `id` (= the provided `id_var` or its default alternative). [[2]] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (`tok_usage_prompt`), the completion (`tok_usage_completion`), the total usage (`tok_usage_total`), and the `id` (= the provided `id_var` or its default alternative).
+#' @return A list with two data tables (if `param_output_type` is the default "complete"): `[[1]]` contains the data table with the columns `n` (= the mo. of `n` responses requested), `prompt` (= the prompt that was sent), `gpt3` (= the completion as returned from the GPT-3 model) and `id` (= the provided `id_var` or its default alternative). `[[2]]` contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (`tok_usage_prompt`), the completion (`tok_usage_completion`), the total usage (`tok_usage_total`), and the `id` (= the provided `id_var` or its default alternative).
 #'
-#' If `output_type` is "text", only the data table in slot [[1]] is returned.
+#' If `output_type` is "text", only the data table in slot `[[1]]` is returned.
 #'
-#' If `output_type` is "meta", only the data table in slot [[2]] is returned.
+#' If `output_type` is "meta", only the data table in slot `[[2]]` is returned.
 #' @examples
 #' # First authenticate with your API key via `gpt3_authenticate('pathtokey')`
 #'
