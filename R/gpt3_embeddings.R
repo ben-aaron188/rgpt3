@@ -15,7 +15,7 @@
 #'
 #' These vectors can be used for downstream tasks such as (vector) similarity calculations.
 #' @param input_var character vector that contains the texts for which you want to obtain text embeddings from the GPT-3 model
-#' #' @param id_var (optional) character vector that contains the user-defined ids of the prompts. See details.
+#' @param id_var (optional) character vector that contains the user-defined ids of the prompts. See details.
 #' @param param_model a character vector that indicates the [embedding model](https://beta.openai.com/docs/guides/embeddings/embedding-models); one of "text-embedding-ada-002" (default), "text-similarity-ada-001", "text-similarity-curie-001", "text-similarity-babbage-001", "text-similarity-davinci-001"
 #' @return A data.table with the embeddings as separate columns; one row represents one input text. See details.
 #' @examples
