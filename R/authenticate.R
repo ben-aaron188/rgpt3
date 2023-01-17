@@ -27,20 +27,20 @@
 #' @export
 gpt3_authenticate = function(path){
   apikey_ = readLines(path)
-  api_key <<- apikey_
-  print(paste0("Will use --> ", api_key, " for authentication."))
+  pkg.env$api_key <<- apikey_
+  print(paste0("Will use --> ", pkg.env$api_key, " for authentication."))
 }
 
 gpt3_endsession = function(){
-  api_key = "---"
+  pkg.env$api_key = "---"
   print('-- session ended: you need to re-authenticate again next time.')
 }
 
 check_apikey_form = function(){
 
-  if(exists(x = 'api_key') == F){
+  if(exists(x = 'pkg.env$api_key') == FALSE){
     warning("Use gpt3_authenticate() to set your API key")
-  } else if(nchar(api_key) < 10){
+  } else if(nchar(pkg.env$api_key) < 10){
 
     warning("Use gpt3_authenticate() to set your API key")
 

@@ -50,7 +50,7 @@ gpt3_single_embedding = function(input
 
   request_base = httr::POST(url = url.embeddings
                             , body = parameter_list
-                            , httr::add_headers(Authorization = paste("Bearer", api_key))
+                            , httr::add_headers(Authorization = paste("Bearer", pkg.env$api_key))
                             , encode = "json")
 
 

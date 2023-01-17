@@ -9,7 +9,7 @@
 #' @examples
 #' gpt3_test_completion()
 #' @export
-gpt3_test_completion = function(verbose=T){
+gpt3_test_completion = function(verbose=TRUE){
 
   check_apikey_form()
 
@@ -18,7 +18,7 @@ gpt3_test_completion = function(verbose=T){
                                   , max_tokens = 100)
   print(paste0('.. test successful ..'))
 
-  if(verbose==T){
+  if(verbose==TRUE){
     # print(paste0('Requested completion for this prompt --> ', test_prompt))
     # print(paste0('GPT-3 completed --> ', test_output))
     test_output

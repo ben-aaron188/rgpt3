@@ -4,7 +4,7 @@
 \alias{gpt3_test_completion}
 \title{Make a test request to the GPT-3 API}
 \usage{
-gpt3_test_completion(verbose = T)
+gpt3_test_completion(verbose = TRUE)
 }
 \arguments{
 \item{verbose}{(boolean) if TRUE prints the actual prompt and GPT-3
