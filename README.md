@@ -52,6 +52,24 @@ You can run the test function below, which sends a simple request (here: the ins
 gpt3_test_completion()
 ```
 
+## Known issues and fixes
+
+### API call error
+
+Error: `Error in core_output$gpt3[i] ... replacement has length zero`
+
+This error is telling you that the call made to the API was not successful. This should already fail when you run the `gpt3_test_completion()` function. There are several things that can cause this, so best check the below if you get this error (in that order):
+
+1. Did you run the authentication properly to your API key with `gpt3_authenticate("/Users/.../access_key.txt")` (the path can take any form as long as you point it to a file (here called: `access_key.txt`) where your API key is located
+1. Does the file with your API key (e.g., `access_key.txt`) contain a newline after the API? It should contain a newline, so add one if this is missing.
+1. Is your free API limit from OpenAI still within the valid period (this is usually one month)?
+1. Are you still within the actual API limit (whether you use a free account or a paid one)?
+
+If you can answer "yes" to all of the above and the error persists, then please [open an issue](https://github.com/ben-aaron188/rgpt3/issues) so this can be looked into.
+
+
+
+
 
 ## Core functions
 
@@ -177,6 +195,7 @@ You are free to make contributions to the package via pull requests. If you do s
 - [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
 - [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
 - [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
+- [update] 30 Jan 2023: added error shooting for API call errors
 
 
 ## Citation
