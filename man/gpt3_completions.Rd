@@ -22,57 +22,134 @@ gpt3_completions(
 )
 }
 \arguments{
-\item{prompt_var}{character vector that contains the prompts to the GPT-3 request}
+\item{prompt_var}{character vector that contains the prompts to the GPT-3
+request}
 
-\item{id_var}{(optional) character vector that contains the user-defined ids of the prompts. See details.}
+\item{id_var}{(optional) character vector that contains the user-defined ids
+of the prompts. See details.}
 
-\item{param_output_type}{character determining the output provided: "complete" (default), "text" or "meta"}
+\item{param_output_type}{character determining the output provided: "complete"
+(default), "text" or "meta"}
 
-\item{param_model}{a character vector that indicates the \href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of "text-davinci-003" (default), "text-davinci-002", "text-davinci-001", "text-curie-001", "text-babbage-001" or "text-ada-001"}
+\item{param_model}{a character vector that indicates the
+\href{https://beta.openai.com/docs/models/gpt-3}{model} to use; one of
+"text-davinci-003" (default), "text-davinci-002", "text-davinci-001",
+"text-curie-001", "text-babbage-001" or "text-ada-001"}
 
-\item{param_suffix}{character (default: NULL) (from the official API documentation: \emph{The suffix that comes after a completion of inserted text})}
+\item{param_suffix}{character (default: NULL) (from the official API
+documentation: \emph{The suffix that comes after a completion of inserted text})}
 
-\item{param_max_tokens}{numeric (default: 100) indicating the maximum number of tokens that the completion request should return (from the official API documentation: \emph{The maximum number of tokens to generate in the completion. The token count of your prompt plus max_tokens cannot exceed the model's context length. Most models have a context length of 2048 tokens (except for the newest models, which support 4096)})}
+\item{param_max_tokens}{numeric (default: 100) indicating the maximum number
+of tokens that the completion request should return (from the official API
+documentation: \emph{The maximum number of tokens to generate in the completion.
+The token count of your prompt plus max_tokens cannot exceed the model's
+context length. Most models have a context length of 2048 tokens (except for
+the newest models, which support 4096)})}
 
-\item{param_temperature}{numeric (default: 0.9) specifying the sampling strategy of the possible completions (from the official API documentation: \emph{What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer. We generally recommend altering this or top_p but not both.})}
+\item{param_temperature}{numeric (default: 0.9) specifying the sampling
+strategy of the possible completions (from the official API documentation:
+\emph{What sampling temperature to use. Higher values means the model will take
+more risks. Try 0.9 for more creative applications, and 0 (argmax sampling)
+for ones with a well-defined answer. We generally recommend altering this or
+top_p but not both.})}
 
-\item{param_top_p}{numeric (default: 1) specifying sampling strategy as an alternative to the temperature sampling (from the official API documentation: \emph{An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10\% probability mass are considered. We generally recommend altering this or temperature but not both.})}
+\item{param_top_p}{numeric (default: 1) specifying sampling strategy as an
+alternative to the temperature sampling (from the official API
+documentation: \emph{An alternative to sampling with temperature, called nucleus
+sampling, where the model considers the results of the tokens with top_p
+probability mass. So 0.1 means only the tokens comprising the top 10\%
+probability mass are considered. We generally recommend altering this or
+temperature but not both.})}
 
-\item{param_n}{numeric (default: 1) specifying the number of completions per request (from the official API documentation: \emph{How many completions to generate for each prompt. \strong{Note: Because this parameter generates many completions, it can quickly consume your token quota.} Use carefully and ensure that you have reasonable settings for max_tokens and stop.})}
+\item{param_n}{numeric (default: 1) specifying the number of completions per
+request (from the official API documentation: \emph{How many completions to
+generate for each prompt. \strong{Note: Because this parameter generates many
+completions, it can quickly consume your token quota.} Use carefully and
+ensure that you have reasonable settings for max_tokens and stop.})}
 
-\item{param_logprobs}{numeric (default: NULL) (from the official API documentation: \emph{Include the log probabilities on the logprobs most likely tokens, as well the chosen tokens. For example, if logprobs is 5, the API will return a list of the 5 most likely tokens. The API will always return the logprob of the sampled token, so there may be up to logprobs+1 elements in the response. The maximum value for logprobs is 5. If you need more than this, please go to \url{https://help.openai.com/en/} and describe your use case.})}
+\item{param_logprobs}{numeric (default: NULL) (from the official API
+documentation: \emph{Include the log probabilities on the logprobs most likely
+tokens, as well the chosen tokens. For example, if logprobs is 5, the API
+will return a list of the 5 most likely tokens. The API will always return
+the logprob of the sampled token, so there may be up to logprobs+1 elements
+in the response. The maximum value for logprobs is 5. If you need more than
+this, please go to
+\url{https://help.openai.com/en/} and describe your
+use case.})}
 
-\item{param_stop}{character or character vector (default: NULL) that specifies after which character value when the completion should end (from the official API documentation: \emph{Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.})}
+\item{param_stop}{character or character vector (default: NULL) that specifies
+after which character value when the completion should end (from the
+official API documentation: \emph{Up to 4 sequences where the API will stop
+generating further tokens. The returned text will not contain the stop
+sequence.})}
 
-\item{param_presence_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness if a token already exists (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
+\item{param_presence_penalty}{numeric (default: 0) between -2.00  and +2.00 to
+determine the penalisation of repetitiveness if a token already exists (from
+the official API documentation: \emph{Number between -2.0 and 2.0. Positive
+values penalize new tokens based on whether they appear in the text so far,
+increasing the model's likelihood to talk about new topics.}). See also:
+\url{https://beta.openai.com/docs/api-reference/parameter-details}}
 
-\item{param_frequency_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
+\item{param_frequency_penalty}{numeric (default: 0) between -2.00  and +2.00
+to determine the penalisation of repetitiveness based on the frequency of a
+token in the text already (from the official API documentation: \emph{Number
+between -2.0 and 2.0. Positive values penalize new tokens based on their
+existing frequency in the text so far, decreasing the model's likelihood to
+repeat the same line verbatim.}). See also:
+\url{https://beta.openai.com/docs/api-reference/parameter-details}}
 
-\item{param_best_of}{numeric (default: 1) that determines the space of possibilities from which to select the completion with the highest probability (from the official API documentation: \emph{Generates \code{best_of} completions server-side and returns the "best" (the one with the highest log probability per token)}). See details.}
+\item{param_best_of}{numeric (default: 1) that determines the space of
+possibilities from which to select the completion with the highest
+probability (from the official API documentation: \emph{Generates \code{best_of}
+completions server-side and returns the "best" (the one with the highest log
+probability per token)}). See details.}
 }
 \value{
-A list with two data tables (if \code{param_output_type} is the default "complete"): [\link{1}] contains the data table with the columns \code{n} (= the mo. of \code{n} responses requested), \code{prompt} (= the prompt that was sent), \code{gpt3} (= the completion as returned from the GPT-3 model) and \code{id} (= the provided \code{id_var} or its default alternative). [\link{2}] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (\code{tok_usage_prompt}), the completion (\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), and the \code{id} (= the provided \code{id_var} or its default alternative).
+A list with two data tables (if \code{param_output_type} is the default
+"complete"): \verb{[[1]]} contains the data table with the columns \code{n} (= the mo.
+of \code{n} responses requested), \code{prompt} (= the prompt that was sent), \code{gpt3}
+(= the completion as returned from the GPT-3 model) and \code{id} (= the provided
+\code{id_var} or its default alternative). \verb{[[2]]} contains the meta information
+of the request, including the request id, the parameters of the request and
+the token usage of the prompt (\code{tok_usage_prompt}), the completion
+(\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), and the \code{id}
+(= the provided \code{id_var} or its default alternative).
 
-If \code{output_type} is "text", only the data table in slot [\link{1}] is returned.
+If \code{output_type} is "text", only the data table in slot \verb{[[1]]} is returned.
 
-If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
+If \code{output_type} is "meta", only the data table in slot \verb{[[2]]} is returned.
 }
 \description{
-\code{gpt3_completions()} is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{gpt3_single_completion()} function to allow for bunch processing of requests to the Open AI GPT-3 API.
+\code{gpt3_completions()} is the package's main function for rquests
+and takes as input a vector of prompts and processes each prompt as per the
+defined parameters. It extends the \code{gpt3_single_completion()} function to
+allow for bunch processing of requests to the Open AI GPT-3 API.
 }
 \details{
-The easiest (and intended) use case for this function is to create a data.frame or data.table with variables that contain the prompts to be requested from GPT-3 and a prompt id (see examples below).
-For a general guide on the completion requests, see \url{https://beta.openai.com/docs/guides/completion}. This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on \url{https://beta.openai.com/docs/api-reference/completions} and reproduced below.
+The easiest (and intended) use case for this function is to create a
+data.frame or data.table with variables that contain the prompts to be
+requested from GPT-3 and a prompt id (see examples below). For a general
+guide on the completion requests, see
+\url{https://beta.openai.com/docs/guides/completion}.
+This function provides you with an R wrapper to send requests with the full
+range of request parameters as detailed on
+\url{https://beta.openai.com/docs/api-reference/completions}
+and reproduced below.
 
-For the \code{best_of} parameter: The \code{gpt3_single_completion()} (which is used here in a vectorised manner) handles the issue that best_of must be greater than n by setting \code{if(best_of <= n){ best_of = n}}.
+For the \code{best_of} parameter: The \code{gpt3_single_completion()} (which is used
+here in a vectorised manner) handles the issue that best_of must be greater
+than n by setting \code{if(best_of <= n){ best_of = n}}.
 
-If \code{id_var} is not provided, the function will use \code{prompt_1} ... \code{prompt_n} as id variable.
+If \code{id_var} is not provided, the function will use \code{prompt_1} ... \code{prompt_n}
+as id variable.
 
-Parameters not included/supported:
+Parameters not included/supported: - \code{logit_bias}:
+\url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-logit_bias}
 \itemize{
-\item \code{logit_bias}: \url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-logit_bias}
-\item \code{echo}: \url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-echo}
-\item \code{stream}: \url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream}
+\item \code{echo}:
+\url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-echo}
+\item \code{stream}:
+\url{https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream}
 }
 }
 \examples{
@@ -80,7 +157,10 @@ Parameters not included/supported:
 
 # Once authenticated:
 # Assuming you have a data.table with 3 different prompts:
-dt_prompts = data.table::data.table('prompts' = c('What is the meaning if life?', 'Write a tweet about London:', 'Write a research proposal for using AI to fight fake news:'), 'prompt_id' = c(LETTERS[1:3]))
+dt_prompts = data.table::data.table('prompts' =
+c('What is the meaning if life?', 'Write a tweet about London:',
+'Write a research proposal for using AI to fight fake news:'),
+'prompt_id' = c(LETTERS[1:3]))
 gpt3_completions(prompt_var = dt_prompts$prompts
    , id_var = dt_prompts$prompt_id)
 

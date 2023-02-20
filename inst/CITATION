@@ -1,0 +1,12 @@
+citHeader("If you use this R package, please cite it as below.")
+
+citEntry(
+  entry    = "misc",
+  title    = "rgpt3: Making requests from R to the GPT-3 API",
+  author   = "Bennett Kleinberg",
+  doi    = "10.5281/zenodo.7327667",
+  url      = "https://github.com/ben-aaron188/rgpt3",
+  textVersion = paste(
+
+  )
+)
