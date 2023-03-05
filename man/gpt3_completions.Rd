@@ -58,7 +58,7 @@ If \code{output_type} is "text", only the data table in slot [\link{1}] is retur
 If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
 }
 \description{
-\code{gpt3_completions()} is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{gpt3_single_completion()} function to allow for bunch processing of requests to the Open AI GPT-3 API.
+\code{gpt3_completions()} is the package's main function for requests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{gpt3_single_completion()} function to allow for bunch processing of requests to the Open AI GPT-3 API.
 }
 \details{
 The easiest (and intended) use case for this function is to create a data.frame or data.table with variables that contain the prompts to be requested from GPT-3 and a prompt id (see examples below).

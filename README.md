@@ -2,7 +2,7 @@
 
 # `rgpt3` 
 
-**Making requests from R to the GPT-3 API**
+**Making requests from R to the GPT-3 API and to ChatGPT**
 
 
 _Note: this is a "community-maintained” package (i.e., not the official one). For the official OpenAI libraries (python and node.js endpoints), go to [https://beta.openai.com/docs/libraries/python-bindings](https://beta.openai.com/docs/libraries/python-bindings)_
@@ -75,18 +75,21 @@ If you can answer "yes" to all of the above and the error persists, then please 
 
 `rgpt3` currently is structured into the following functions:
 
-- Making requests (i.e. prompting the model)
+- Making _standard_ requests (i.e. prompting the GPT models)
     - single requests: `gpt3_single_completion()`
     - make multiple prompt-based requests from a source data.frame or data.table: `gpt3_completions()`
+- Interacting with ChatGPT
+    - single chat requests: `chatgpt_single()`
+    - make multiple prompt-based chat requests from a source data.frame or data.table: `chatgpt()`
 - Obtain embeddings
     - obtain embeddings for a single text input: `gpt3_single_embedding`
     - obtain embeddings for multiple texts from a source data.frame or data.table: `gpt3_embeddings()`
 
-The basic principle is that you can (and should) best use the more extensible `gpt3_completions()` and `gpt3_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
+The basic principle is that you can (and should) best use the more extensible `gpt3_completions()`, `chatgpt()` and `gpt3_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
 
 This R package gives you full control over the parameters that the API contains. You can find these in detail in the package documentation and help files (e.g., `?gpt3_completions`) on the Open AI website for [completion requests](https://beta.openai.com/docs/api-reference/completions/create) and [embeddings](https://beta.openai.com/docs/api-reference/embeddings/create).
 
-Note: this package enables you to use the core functionality of GPT-3 (making completion requests) and provides a function to obtain embeddings. There are additional functionalities in the core API such as fine-tuning models (i.e., providing labelled data to update/retrain the existing model) and asking GPT-3 to make edits to text input. These are not part of this package since the focus of making GPT-3 accessible from R is on the completion requests.
+Note: this package enables you to use the core functionality of GPT-3 (making completion requests) and ChatGPT, and provides a function to obtain embeddings. There are additional functionalities in the core API such as fine-tuning models (i.e., providing labelled data to update/retrain the existing model) and asking GPT-3 to make edits to text input. These are not (yet) part of this package since the focus of making GPT-3 accessible from R is on the completion requests.
 
 
 ## Examples
@@ -95,7 +98,7 @@ The examples below illustrate all functions of the package.
 
 Note that due to the [sampling temperature parameter](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature) of the requests - unless set to `0.0` - the results may vary (as the model is not deterministic then).
 
-### Making requests
+### Making requests (standard GPT models, i.e. before ChatGPT)
 
 The basic form of the GPT-3 API connector is via requests. These requests can be of various kinds including questions ("What is the meaning of life?"), text summarisation tasks, text generation tasks and many more. A whole list of examples is on the [Open AI examples page](https://beta.openai.com/examples).
 
@@ -103,7 +106,7 @@ Think of requests as instructions you give the to model. You may also hear the i
 
 **Example 1: making a single completion request**
 
-This request "tells" GPT-3 to write a cynical text about human nature (five times) with a sampling temperature of 0.9, a maximium length of 100 tokens.
+This request "tells" GPT-3 to write a cynical text about human nature (five times) with a sampling temperature of 0.9 and a maximium length of 100 tokens.
 
 ```{r}
 example_1 = gpt3_single_completion(prompt_input = 'Write a cynical text about human nature:'
@@ -175,6 +178,52 @@ dim(multiple_embeddings)
 # [1]    10 1025 # because we have ten rows of 1025 columns each (by default 1024 embeddings elements and 1 id variable)
 ```
 
+## ChatGPT
+
+In principle, ChatGPT can do all the things that the _standard_ GPT models (e.g., DaVinci-003) can do, but just a little better. An excellent brief summary is provided by OpenAI here: [https://openai.com/blog/chatgpt](https://openai.com/blog/chatgpt). In the examples below, we will reproduce the ones from the `gpt3_single_completion()` and `gpt3_completions()` as listed above. 
+
+The biggest change in how we interact with ChatGPT's API compared to the previous models is that we send the requests with a **role** and **content** of the prompts. The role must be one of 'user', 'system' or 'assistant' and you essentially tell ChatGPT in wich role the content you send is to be interpreted. The content is analogous to the standard prompts. The reason why the role is necessary is that it allows you provide a full back-and-forth conversational flow (e.g., [https://platform.openai.com/docs/guides/chat/introduction](https://platform.openai.com/docs/guides/chat/introduction)).
+
+**Example 1: making a single chat completion request**
+
+This request "tells" ChatGPT to write a cynical text about human nature (five times) with a sampling temperature of 1.5 and a maximium length of 100 tokens.
+
+```{r}
+chatgpt_example_1 = gpt3_single_completion(prompt_input = 'Write a cynical text about human nature:'
+                    , temperature = 0.9
+                    , max_tokens = 100
+                    , n = 5)
+```
+
+The returned list contains the actual instruction + output in `chatgpt_example_1[[1]]` and meta information about your request in `chatgpt_example_1[[2]]`.
+
+A verbatim excerpt of the produced output (from the `chatgpt_example_1[[1]]$chatgpt_content` column) here is: 
+
+> Settle in, young one. Let me impart to you some hard-earned wisdom about human nature. It is a wild creature, not easily tamed or discernible. Some claim they understand it fully, but they are as deluded as a chimpanzee wearing a top hat. I've seen people  at their worst: manipulating, deceiving, and diminishing others simply to assert their misguided superiority. [...]
+
+
+**Example 2: multiple prompts**
+
+We can extend the example and make multiple requests by using a data.frame / data.table as input for the `chatgpt()` function:
+
+```{r}
+my_chatgpt_prompts = data.frame('prompts_roles' = rep('user', 3)
+                          , 'prompts_contents' =
+                            c('You are a bureacrat. Complete this sentence: universities are'
+                              , 'You are an award-winning poet. Write a poem about music:'
+                              , 'Which colour is better and why? Red or blue?')
+                        ,'prompt_id' = c(LETTERS[1:3]))
+
+chatgpt_example_2 = chatgpt(prompt_role_var = my_chatgpt_prompts$prompts_roles
+                            , prompt_content_var = my_chatgpt_prompts$prompts_contents
+                             , id_var = my_chatgpt_prompts$prompt_id
+                             , param_max_tokens = 100
+                             , param_n = 5
+                             , param_temperature = 0.4)
+```
+
+Note that this completion request produced 5 (`param_n = 5`) completions for each of the three prompts, so a total of 15 completions.
+
 
 
 ## Cautionary note
@@ -192,11 +241,11 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
-- [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
-- [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
-- [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
+- [new release] 5 Mar 2023: the package now supports ChatGPT 
 - [update] 30 Jan 2023: added error shooting for API call errors
-
+- [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
+- [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
+- [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
 
 ## Citation
 
@@ -204,11 +253,11 @@ You are free to make contributions to the package via pull requests. If you do s
 @software{Kleinberg_rgpt3_Making_requests_2022,
     author = {Kleinberg, Bennett},
     doi = {10.5281/zenodo.7327667},
-    month = {12},
-    title = {{rgpt3: Making requests from R to the GPT-3 API}},
+    month = {3},
+    title = {{rgpt3: Making requests from R to the GPT-3 API and ChatGPT}},
     url = {https://github.com/ben-aaron188/rgpt3},
-    version = {0.3.1},
-    year = {2022}
+    version = {0.4},
+    year = {2023}
 }
 ```
 
