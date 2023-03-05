@@ -1,7 +1,7 @@
 #' Makes bunch completion requests to the GPT-3 API
 #'
 #' @description
-#' `gpt3_completions()` is the package's main function for rquests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the `gpt3_single_completion()` function to allow for bunch processing of requests to the Open AI GPT-3 API.
+#' `gpt3_completions()` is the package's main function for requests and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the `gpt3_single_completion()` function to allow for bunch processing of requests to the Open AI GPT-3 API.
 #' @details
 #' The easiest (and intended) use case for this function is to create a data.frame or data.table with variables that contain the prompts to be requested from GPT-3 and a prompt id (see examples below).
 #' For a general guide on the completion requests, see [https://beta.openai.com/docs/guides/completion](https://beta.openai.com/docs/guides/completion). This function provides you with an R wrapper to send requests with the full range of request parameters as detailed on [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions) and reproduced below.

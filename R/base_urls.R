@@ -6,3 +6,4 @@
 url.completions = "https://api.openai.com/v1/completions"
 url.embeddings = "https://api.openai.com/v1/embeddings"
 url.fine_tune = "https://api.openai.com/v1/fine-tunes"
+url.chat_completions = "https://api.openai.com/v1/chat/completions"
