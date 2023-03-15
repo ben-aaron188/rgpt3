@@ -186,13 +186,14 @@ The biggest change in how we interact with ChatGPT's API compared to the previou
 
 **Example 1: making a single chat completion request**
 
-This request "tells" ChatGPT to write a cynical text about human nature (five times) with a sampling temperature of 1.5 and a maximium length of 100 tokens.
+This request "tells" ChatGPT to write a cynical text about human nature (five times) from the perspective of an old, male writer with a sampling temperature of 1.5 and a maximium length of 100 tokens.
 
 ```{r}
-chatgpt_example_1 = gpt3_single_completion(prompt_input = 'Write a cynical text about human nature:'
-                    , temperature = 0.9
-                    , max_tokens = 100
-                    , n = 5)
+chatgpt_example_1 = chatgpt_single(prompt_role = 'user'
+                                   , prompt_content = 'You are a cynical, old male writer. Write a cynical text about human nature:'
+                                           , temperature = 1.5
+                                           , max_tokens = 100
+                                           , n = 5)
 ```
 
 The returned list contains the actual instruction + output in `chatgpt_example_1[[1]]` and meta information about your request in `chatgpt_example_1[[2]]`.

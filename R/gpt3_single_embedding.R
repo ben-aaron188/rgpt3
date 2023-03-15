@@ -25,8 +25,8 @@
 #' gpt3_single_embedding(input = sample_string)
 #'
 #' ## Change the model:
-#' #' gpt3_single_embedding(input = sample_string
-#'     , model = 'text-similarity-curie-001')
+#' gpt3_single_embedding(input = sample_string
+#'   , model = 'text-similarity-curie-001')
 #' @export
 gpt3_single_embedding = function(input
                                , model = 'text-embedding-ada-002'
