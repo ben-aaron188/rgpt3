@@ -87,6 +87,11 @@ chatgpt_single = function(prompt_role = 'user'
 
   request_content = httr::content(request_base)
 
+  if(request_base$status_code != 200){
+    warning(paste0("Request completed with error. Code: ", request_base$status_code
+                   , ", message: ", request_content$error$message))
+  }
+
   if(n == 1){
     core_output = data.table::data.table('n' = 1
                                          , 'prompt_role' = prompt_role
