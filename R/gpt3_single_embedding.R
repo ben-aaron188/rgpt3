@@ -40,6 +40,10 @@ gpt3_single_embedding = function(input
                             , httr::add_headers(Authorization = paste("Bearer", api_key))
                             , encode = "json")
 
+  if(request_base$status_code != 200){
+    warning(paste0("Request completed with error. Code: ", request_base$status_code
+                   , ", message: ", request_content$error$message))
+  }
 
   output_base = httr::content(request_base)
 

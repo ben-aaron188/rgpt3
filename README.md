@@ -242,6 +242,7 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
+- [small change] 24 Mar 2023: included error handling for httr requests as per [https://github.com/ben-aaron188/rgpt3/pull/7](https://github.com/ben-aaron188/rgpt3/pull/7)
 - [new release] 5 Mar 2023: the package now supports ChatGPT 
 - [update] 30 Jan 2023: added error shooting for API call errors
 - [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".

@@ -99,7 +99,6 @@ gpt3_single_completion = function(prompt_input
                             , encode = "json")
 
   request_content = httr::content(request_base)
-  # request_content = httr::content(request_base, encoding = "Latin-ASCII")
 
   if(request_base$status_code != 200){
     warning(paste0("Request completed with error. Code: ", request_base$status_code
