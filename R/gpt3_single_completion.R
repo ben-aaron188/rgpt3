@@ -101,6 +101,11 @@ gpt3_single_completion = function(prompt_input
   request_content = httr::content(request_base)
   # request_content = httr::content(request_base, encoding = "Latin-ASCII")
 
+  if(request_base$status_code != 200){
+    warning(paste0("Request completed with error. Code: ", request_base$status_code
+                  , ", message: ", request_content$error$message))
+  }
+
   if(n == 1){
     core_output = data.table::data.table('n' = 1
                                          , 'prompt' = prompt_input
