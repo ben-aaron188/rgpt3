@@ -4,8 +4,8 @@ authors:
 - family-names: "Kleinberg"
   given-names: "Bennett"
   orcid: "https://orcid.org/0000-0003-1658-9086"
-title: "rgpt3: Making requests from R to the GPT-3 API and ChatGPT"
-version: 0.4
-date-released: 2023-03-05
+title: "rgpt3: Making requests from R to the GPT API"
+version: 1.0
+date-released: 2024-02-07
 url: "https://github.com/ben-aaron188/rgpt3"
 doi: "10.5281/zenodo.7327667"
