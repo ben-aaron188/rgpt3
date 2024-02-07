@@ -16,6 +16,7 @@ Previously, there was a difference between text completions and chat completions
 
 To make interaction easier and less confusing, this R package now **wraps all functions into a general `rgpt(...)` function** which can deal with all GPT models and allows you to make requests to more models than before.
 
+In short: with the new package structure all GPT models can be used in one common wrapper and easier to adapt for future releases from OpenAI.
 
 
 ## Getting started
@@ -168,9 +169,9 @@ my_prompts = data.frame('prompts_roles' = rep('user', 3)
                               , 'Which colour is better and why? Red or blue?')
                         ,'prompt_id' = c(LETTERS[1:3]))
 
-example_2 = rgpt(prompt_role_var = my_chatgpt_prompts$prompts_roles
-                            , prompt_content_var = my_chatgpt_prompts$prompts_contents
-                             , id_var = my_chatgpt_prompts$prompt_id
+example_2 = rgpt(prompt_role_var = my_prompts$prompts_roles
+                            , prompt_content_var = my_prompts$prompts_contents
+                             , id_var = my_prompts$prompt_id
                              , param_max_tokens = 100
                              , param_n = 5
                              , param_temperature = 0.4)
@@ -188,7 +189,7 @@ Here we load the data that comes with the package:
 data("travel_blog_data")
 ```
 
-The dataset is now available in your environment as `travel_blog_data`. The column (`travel_blog_data$gpt_content`) contains ten texts written by GPT-3 (instructed to: "Write a travel blog about a dog's journey through the UK:").
+The dataset is now available in your environment as `travel_blog_data`. The column (`travel_blog_data$gpt_content`) contains ten texts written by GPT-4 (instructed to: "Write a travel blog about a dog's journey through the UK:").
 
 
 **Example 1: get embeddings for a single text**
