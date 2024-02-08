@@ -17,7 +17,8 @@ rgpt(
   param_n = 1,
   param_stop = NULL,
   param_presence_penalty = 0,
-  param_frequency_penalty = 0
+  param_frequency_penalty = 0,
+  param_logprobs = T
 )
 }
 \arguments{
@@ -43,16 +44,19 @@ rgpt(
 
 \item{param_presence_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness if a token already exists (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
 
-\item{param_frequency_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
+\item{param_frequency_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}
+#' @param param_logprobs boolean (default: TRUE) from the official API documentation: : \emph{whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message.} Will be returned in the output list at slot 3.}
 
 \item{seed}{numeric (optional) the seed to control reproducibility of the completions. If NULL, no seed will be used and results may differ at each completion. See: \url{https://platform.openai.com/docs/api-reference/chat/create#chat-create-seed}}
 }
 \value{
-A list with two data tables (if \code{output_type} is the default "complete"): [\link{1}] contains the data table with the columns \code{n} (= the mo. of \code{n} responses requested), \code{prompt_role} (= the role that was set for the prompt), \code{prompt_content} (= the content that was set for the prompt), \code{gpt_role} (= the role that the GPT assumed in the chat completion) and \code{gpt_content} (= the content that the GPT model provided with its assumed role in the chat completion). [\link{2}] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (\code{tok_usage_prompt}), the completion (\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), the \code{id} (= the provided \code{id_var} or its default alternative), and the system fingerprint (\code{system_fingerprint}) (for reproducibility related to the seed).
+A list with two data tables (if \code{output_type} is the default "complete"): [\link{1}] contains the data table with the columns \code{n} (= the mo. of \code{n} responses requested), \code{prompt_role} (= the role that was set for the prompt), \code{prompt_content} (= the content that was set for the prompt), \code{gpt_role} (= the role that the GPT assumed in the chat completion) and \code{gpt_content} (= the content that the GPT model provided with its assumed role in the chat completion). [\link{2}] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (\code{tok_usage_prompt}), the completion (\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), the \code{id} (= the provided \code{id_var} or its default alternative), and the system fingerprint (\code{system_fingerprint}) (for reproducibility related to the seed). [\link{3}] contains the tokens of the completion (per n requests if applicable) and the corresponding log probabilities.
 
 If \code{output_type} is "text", only the data table in slot [\link{1}] is returned.
 
 If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
+
+If \code{output_type} is "logprobs", only the data table in slot [\link{3}] is returned.
 }
 \description{
 \code{rgpt()} is the package's (new) main function for all chat completion functionality and takes as input a vector of prompts and processes each prompt as per the defined parameters. It extends the \code{rgpt_single()} function to allow for bunch processing of requests to the Open AI GPT API.

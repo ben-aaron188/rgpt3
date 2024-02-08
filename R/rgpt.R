@@ -26,12 +26,15 @@
 #' @param param_stop character or character vector (default: NULL) that specifies after which character value when the completion should end (from the official API documentation: _Up to 4 sequences where the API will stop generating further tokens._)
 #' @param param_presence_penalty numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness if a token already exists (from the official API documentation: _Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics._). See also: [https://beta.openai.com/docs/api-reference/parameter-details](https://beta.openai.com/docs/api-reference/parameter-details)
 #' @param param_frequency_penalty numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: _Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim._). See also: [https://beta.openai.com/docs/api-reference/parameter-details](https://beta.openai.com/docs/api-reference/parameter-details)
+#' #' @param param_logprobs boolean (default: TRUE) from the official API documentation: : _whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message._ Will be returned in the output list at slot 3.
 #'
-#' @return A list with two data tables (if `output_type` is the default "complete"): [[1]] contains the data table with the columns `n` (= the mo. of `n` responses requested), `prompt_role` (= the role that was set for the prompt), `prompt_content` (= the content that was set for the prompt), `gpt_role` (= the role that the GPT assumed in the chat completion) and `gpt_content` (= the content that the GPT model provided with its assumed role in the chat completion). [[2]] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (`tok_usage_prompt`), the completion (`tok_usage_completion`), the total usage (`tok_usage_total`), the `id` (= the provided `id_var` or its default alternative), and the system fingerprint (`system_fingerprint`) (for reproducibility related to the seed).
+#' @return A list with two data tables (if `output_type` is the default "complete"): [[1]] contains the data table with the columns `n` (= the mo. of `n` responses requested), `prompt_role` (= the role that was set for the prompt), `prompt_content` (= the content that was set for the prompt), `gpt_role` (= the role that the GPT assumed in the chat completion) and `gpt_content` (= the content that the GPT model provided with its assumed role in the chat completion). [[2]] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (`tok_usage_prompt`), the completion (`tok_usage_completion`), the total usage (`tok_usage_total`), the `id` (= the provided `id_var` or its default alternative), and the system fingerprint (`system_fingerprint`) (for reproducibility related to the seed). [[3]] contains the tokens of the completion (per n requests if applicable) and the corresponding log probabilities.
 #'
 #' If `output_type` is "text", only the data table in slot [[1]] is returned.
 #'
 #' If `output_type` is "meta", only the data table in slot [[2]] is returned.
+#'
+#' If `output_type` is "logprobs", only the data table in slot [[3]] is returned.
 #' @examples
 #' # First authenticate with your API key via `rgpt_authenticate('pathtokey')`
 #'
@@ -74,7 +77,8 @@ rgpt = function(prompt_role_var
                 , param_n = 1
                 , param_stop = NULL
                 , param_presence_penalty = 0
-                , param_frequency_penalty = 0){
+                , param_frequency_penalty = 0
+                , param_logprobs = T){
 
   data_length = length(prompt_role_var)
   if(missing(id_var)){
@@ -91,6 +95,7 @@ rgpt = function(prompt_role_var
 
   empty_list = list()
   meta_list = list()
+  logprobs_list = list()
 
   for(i in 1:data_length){
 
@@ -107,13 +112,17 @@ rgpt = function(prompt_role_var
                               , n = param_n
                               , stop = param_stop
                               , presence_penalty = param_presence_penalty
-                              , frequency_penalty = param_frequency_penalty)
+                              , frequency_penalty = param_frequency_penalty
+                              , logprobs = param_logprobs)
 
     row_outcome[[1]]$id = data_id[i]
     row_outcome[[2]]$id = data_id[i]
 
+    row_outcome[[3]]$id = data_id[i]
+
     empty_list[[i]] = row_outcome[[1]]
     meta_list[[i]] = row_outcome[[2]]
+    logprobs_list[[i]] = row_outcome[[3]]
 
   }
 
@@ -126,14 +135,21 @@ rgpt = function(prompt_role_var
   if("try-error" %in% class(bunch_meta_output)){
     bunch_meta_output = data.table::rbindlist(meta_list, fill = T)
   }
+  bunch_logprobs_output = try(data.table::rbindlist(logprobs_list), silent = T)
+  if("try-error" %in% class(bunch_logprobs_output)){
+    bunch_logprobs_output = data.table::rbindlist(logprobs_list, fill = T)
+  }
 
   if(param_output_type == 'complete'){
     output = list(bunch_core_output
-                  , bunch_meta_output)
+                  , bunch_meta_output
+                  , bunch_logprobs_output)
   } else if(param_output_type == 'meta'){
     output = bunch_meta_output
   } else if(param_output_type == 'text'){
     output = bunch_core_output
+  } else if(param_output_type == 'logprobs'){
+    output = bunch_logprobs_output
   }
 
   return(output)

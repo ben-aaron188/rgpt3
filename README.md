@@ -85,7 +85,7 @@ If you can answer "yes" to all of the above and the error persists, then please 
 
 ## Core functions
 
-Supported models as per 7 Feb 2024 (see [https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo):
+Supported models as per 8 Feb 2024 (see [https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo):
 
 ```{r}
 models = c('gpt-3.5-turbo-0125'
@@ -181,6 +181,27 @@ Note that this completion request produced 5 (`param_n = 5`) completions for eac
 
 You can make these examples reproducible by setting the seed parameter (see function documentation).
 
+The output will show the actual completions in `example_2[[1]]`, the meta information in `example_2[[2]]` and the logprobs in `example_2[[3]]`. The latter looks as follows:
+
+```{r}
+[[3]]
+          n         token       logprob     id
+      <int>        <char>         <num> <char>
+   1:     1            un -7.207926e-01      A
+   2:     1         ivers -3.650519e-06      A
+   3:     1         ities -1.545168e-05      A
+   4:     1           are -9.968313e-06      A
+   5:     1  institutions -2.104391e-01      A
+  ---                                         
+1213:     5            in -4.751859e-02      C
+1214:     5     different -2.318888e-01      C
+1215:     5      cultures -8.649706e-05      C
+1216:     5             . -1.692448e-02      C
+1217:     5           For -4.265508e-02      C
+```
+
+
+
 ### Embeddings
 
 Here we load the data that comes with the package:
@@ -236,6 +257,7 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
+- [update] 8 Feb 2024: the output now returns the selected tokens and log probabilities in a new (third) output slot.
 - [new major release] 7 Feb 2024: general wrapper function for recent GPT models (i.e., 3.5 and 4) with new function `rgpt(...)`; seed control for reproducibility; updated embeddings function with `rgpt_embeddings(...)`
 - [small change] 24 Mar 2023: included error handling for httr requests as per [https://github.com/ben-aaron188/rgpt3/pull/7](https://github.com/ben-aaron188/rgpt3/pull/7)
 - [new release] 5 Mar 2023: the package now supports ChatGPT 

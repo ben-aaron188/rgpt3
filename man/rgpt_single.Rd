@@ -16,7 +16,8 @@ rgpt_single(
   n = 1,
   stop = NULL,
   presence_penalty = 0,
-  frequency_penalty = 0
+  frequency_penalty = 0,
+  logprobs = T
 )
 }
 \arguments{
@@ -43,13 +44,17 @@ rgpt_single(
 \item{presence_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness if a token already exists (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
 
 \item{frequency_penalty}{numeric (default: 0) between -2.00  and +2.00 to determine the penalisation of repetitiveness based on the frequency of a token in the text already (from the official API documentation: \emph{Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.}). See also: \url{https://beta.openai.com/docs/api-reference/parameter-details}}
+
+\item{logprobs}{boolean (default: TRUE) from the official API documentation: : \emph{whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message.} Will be returned in the output list at slot 3.}
 }
 \value{
-A list with two data tables (if \code{output_type} is the default "complete"): [\link{1}] contains the data table with the columns \code{n} (= the mo. of \code{n} responses requested), \code{prompt_role} (= the role that was set for the prompt), \code{prompt_content} (= the content that was set for the prompt), \code{rgpt_role} (= the role that the GPT model assumed in the chat completion) and \code{rgpt_content} (= the content that the GPT model provided with its assumed role in the chat completion). [\link{2}] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (\code{tok_usage_prompt}), the completion (\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), and the system fingerprint (\code{system_fingerprint}) (for reproducibility related to the seed).
+A list with three data tables (if \code{output_type} is the default "complete"): [\link{1}] contains the data table with the columns \code{n} (= the mo. of \code{n} responses requested), \code{prompt_role} (= the role that was set for the prompt), \code{prompt_content} (= the content that was set for the prompt), \code{rgpt_role} (= the role that the GPT model assumed in the chat completion) and \code{rgpt_content} (= the content that the GPT model provided with its assumed role in the chat completion). [\link{2}] contains the meta information of the request, including the request id, the parameters of the request and the token usage of the prompt (\code{tok_usage_prompt}), the completion (\code{tok_usage_completion}), the total usage (\code{tok_usage_total}), and the system fingerprint (\code{system_fingerprint}) (for reproducibility related to the seed). [\link{3}] contains the tokens of the completion (per n requests if applicable) and the corresponding log probabilities.
 
 If \code{output_type} is "text", only the data table in slot [\link{1}] is returned.
 
 If \code{output_type} is "meta", only the data table in slot [\link{2}] is returned.
+
+If \code{output_type} is "logprobs", only the data table in slot [\link{3}] is returned.
 }
 \description{
 \code{rgpt_single()} sends a single \href{https://platform.openai.com/docs/guides/chat}{chat completion request} to the Open AI GPT API. This function allows you to specify the role and content for your API call.
