@@ -257,6 +257,7 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
+- [minor fix] 18 Apr 2024: updated model list, fixed default model in test completion function to 'gpt-3.5-turbo-0125'
 - [update] 8 Feb 2024: the output now returns the selected tokens and log probabilities in a new (third) output slot.
 - [new major release] 7 Feb 2024: general wrapper function for recent GPT models (i.e., 3.5 and 4) with new function `rgpt(...)`; seed control for reproducibility; updated embeddings function with `rgpt_embeddings(...)`
 - [small change] 24 Mar 2023: included error handling for httr requests as per [https://github.com/ben-aaron188/rgpt3/pull/7](https://github.com/ben-aaron188/rgpt3/pull/7)
@@ -272,7 +273,7 @@ You are free to make contributions to the package via pull requests. If you do s
 @software{Kleinberg_rgpt3_Making_requests_2022,
     author = {Kleinberg, Bennett},
     doi = {10.5281/zenodo.7327667},
-    month = {2},
+    month = {4},
     title = {{rgpt3: Making requests from R to the GPT API}},
     url = {https://github.com/ben-aaron188/rgpt3},
     version = {1.0},

@@ -13,7 +13,8 @@ rgpt_test_completion = function(verbose=T){
 
   test_prompt = 'Write a story about R Studio: '
   test_output = rgpt_single(prompt_content = test_prompt
-                                  , max_tokens = 100)
+                            , max_tokens = 100
+                            , model = 'gpt-3.5-turbo-0125')
   print(paste0('.. test successful ..'))
 
   if(verbose==T){

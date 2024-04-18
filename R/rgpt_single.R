@@ -12,7 +12,7 @@
 #' @param prompt_role character (default: 'user') that contains the role for the prompt message in the GPT (chat) message format. Must be one of 'system', 'assistant', 'user' (default), see [https://platform.openai.com/docs/guides/chat](https://platform.openai.com/docs/guides/chat)
 #' @param prompt_content character that contains the content for the prompt message in the GPT (chat) message format, see [https://platform.openai.com/docs/guides/chat](https://platform.openai.com/docs/guides/chat). This is the key instruction that the GPT model receives.
 #' @param seed numeric (optional) the seed to control reproducibility of the completions. If NULL, no seed will be used and results may differ at each completion. See: [https://platform.openai.com/docs/api-reference/chat/create#chat-create-seed](https://platform.openai.com/docs/api-reference/chat/create#chat-create-seed)
-#' @param model a character vector that indicates the [GPT model](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) to use; currently supported are: 'gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0613', 'gpt-4-0125-preview' (default, = GPT-4 Turbo)
+#' @param model a character vector that indicates the [GPT model](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo) to use; currently supported are: 'gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0125-preview' (default), 'gpt-4-turbo-preview', 'gpt-4-turbo-2024-04-09', 'gpt-4-turbo'
 #' @param output_type character determining the output provided: "complete" (default), "text" or "meta"
 #' @param max_tokens numeric (default: 100) indicating the maximum number of tokens that the completion request should return (from the official API documentation: _The maximum number of tokens allowed for the generated answer. By default, the number of tokens the model can return will be (4096 - prompt tokens)._)
 #' @param temperature numeric (default: 1.0) specifying the sampling strategy of the possible completions (from the official API documentation: _What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or `top_p` but not both._)
@@ -73,11 +73,13 @@ rgpt_single = function(prompt_role = 'user'
              , 'gpt-3.5-turbo-0613'
              , 'gpt-3.5-turbo-16k-0613'
              , 'gpt-4'
-             , 'gpt-4-0613'
-             , 'gpt-4-0125-preview')
+             , 'gpt-4-0125-preview'
+             , 'gpt-4-turbo-preview'
+             , 'gpt-4-turbo-2024-04-09'
+             , 'gpt-4-turbo')
 
   if(!model %in% models){
-    message(paste0('The `model` is not supported or contains a typo.'))
+    message(paste0('The `model` is not on the list of supported models or contains a typo. For current models, have a look at: https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4'))
   }
 
 
