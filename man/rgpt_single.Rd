@@ -8,7 +8,7 @@ rgpt_single(
   prompt_role = "user",
   prompt_content,
   seed = NULL,
-  model = "gpt-4-0125-preview",
+  model = "gpt-4o",
   output_type = "complete",
   max_tokens = 100,
   temperature = 1,
@@ -27,7 +27,7 @@ rgpt_single(
 
 \item{seed}{numeric (optional) the seed to control reproducibility of the completions. If NULL, no seed will be used and results may differ at each completion. See: \url{https://platform.openai.com/docs/api-reference/chat/create#chat-create-seed}}
 
-\item{model}{a character vector that indicates the \href{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}{GPT model} to use; currently supported are: 'gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0125-preview' (default), 'gpt-4-turbo-preview', 'gpt-4-turbo-2024-04-09', 'gpt-4-turbo'}
+\item{model}{a character vector that indicates the \href{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}{GPT model} to use; currently supported are: 'gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0125-preview', 'gpt-4-turbo-preview', 'gpt-4-turbo-2024-04-09', 'gpt-4-turbo', 'gpt-4o' (default)}
 
 \item{output_type}{character determining the output provided: "complete" (default), "text" or "meta"}
 

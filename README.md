@@ -66,6 +66,9 @@ rgpt_test_completion()
 
 ## Known issues and fixes
 
+### API model access privileges
+
+For some of the most recent models (e.g., the GPT-4 models), you may need to check if you have access to them via the API. This used to be limited to paid accounts. If you do not have access to a model and run a request via this R package, you will encounter an error. In that case, best try other (older) models to identify if that was the issue.
 
 ### API call error
 
@@ -85,7 +88,7 @@ If you can answer "yes" to all of the above and the error persists, then please 
 
 ## Core functions
 
-Supported models as per 8 Feb 2024 (see [https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo):
+Supported models as per 21 May 2024 (see [https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo):
 
 ```{r}
 models = c('gpt-3.5-turbo-0125'
@@ -96,7 +99,8 @@ models = c('gpt-3.5-turbo-0125'
            , 'gpt-3.5-turbo-16k-0613'
            , 'gpt-4'
            , 'gpt-4-0613'
-           , 'gpt-4-0125-preview')
+           , 'gpt-4-0125-preview'
+           , 'gpt-4o')
 ```
 
 
@@ -257,6 +261,7 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
+- [update] 21 May 2024: The new `gpt-4o` model is supported and is now the **default model** for chat completion requests
 - [minor fix] 18 Apr 2024: updated model list, fixed default model in test completion function to 'gpt-3.5-turbo-0125'
 - [update] 8 Feb 2024: the output now returns the selected tokens and log probabilities in a new (third) output slot.
 - [new major release] 7 Feb 2024: general wrapper function for recent GPT models (i.e., 3.5 and 4) with new function `rgpt(...)`; seed control for reproducibility; updated embeddings function with `rgpt_embeddings(...)`
@@ -273,7 +278,7 @@ You are free to make contributions to the package via pull requests. If you do s
 @software{Kleinberg_rgpt3_Making_requests_2022,
     author = {Kleinberg, Bennett},
     doi = {10.5281/zenodo.7327667},
-    month = {4},
+    month = {5},
     title = {{rgpt3: Making requests from R to the GPT API}},
     url = {https://github.com/ben-aaron188/rgpt3},
     version = {1.0},

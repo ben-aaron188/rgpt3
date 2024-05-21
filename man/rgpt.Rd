@@ -10,7 +10,7 @@ rgpt(
   param_seed = NULL,
   id_var,
   param_output_type = "complete",
-  param_model = "gpt-4-0125-preview",
+  param_model = "gpt-4o",
   param_max_tokens = 100,
   param_temperature = 1,
   param_top_p = 1,
@@ -30,7 +30,7 @@ rgpt(
 
 \item{param_output_type}{character determining the output provided: "complete" (default), "text" or "meta"}
 
-\item{param_model}{a character vector that indicates the \href{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}{GPT model} to use; currently supported are: 'gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0125-preview' (default), 'gpt-4-turbo-preview', 'gpt-4-turbo-2024-04-09', 'gpt-4-turbo'}
+\item{param_model}{a character vector that indicates the \href{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}{GPT model} to use; currently supported are: ''gpt-3.5-turbo-0125', 'gpt-3.5-turbo', 'gpt-3.5-turbo-1106', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0125-preview', 'gpt-4-turbo-preview', 'gpt-4-turbo-2024-04-09', 'gpt-4-turbo', 'gpt-4o' (default)}
 
 \item{param_max_tokens}{numeric (default: 100) indicating the maximum number of tokens that the completion request should return (from the official API documentation: \emph{The maximum number of tokens allowed for the generated answer. By default, the number of tokens the model can return will be (4096 - prompt tokens).})}
 
