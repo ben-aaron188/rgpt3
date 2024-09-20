@@ -77,7 +77,8 @@ rgpt_single = function(prompt_role = 'user'
              , 'gpt-4-turbo-preview'
              , 'gpt-4-turbo-2024-04-09'
              , 'gpt-4-turbo'
-             , 'gpt-4o')
+             , 'gpt-4o'
+             , 'gpt-4o-mini')
 
   if(!model %in% models){
     message(paste0('The `model` is not on the list of supported models or contains a typo. For current models, have a look at: https://platform.openai.com/docs/models/gpt-4o'))
