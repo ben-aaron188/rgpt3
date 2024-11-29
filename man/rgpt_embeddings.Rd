@@ -4,7 +4,12 @@
 \alias{rgpt_embeddings}
 \title{Retrieves text embeddings for character input from a vector from OpenAI's GPT API}
 \usage{
-rgpt_embeddings(input_var, id_var, param_model = "text-embedding-3-large")
+rgpt_embeddings(
+  input_var,
+  id_var,
+  param_model = "text-embedding-3-large",
+  param_dimensions = 256
+)
 }
 \arguments{
 \item{input_var}{character vector that contains the texts for which you want to obtain text embeddings from the specified GPT model}
@@ -12,6 +17,8 @@ rgpt_embeddings(input_var, id_var, param_model = "text-embedding-3-large")
 \item{id_var}{(optional) character vector that contains the user-defined ids of the prompts. See details.}
 
 \item{param_model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/embedding-models}{embedding model}; one of "text-embedding-3-large" (default), "text-embedding-3-small", "text-embedding-ada-002"}
+
+\item{param_dimensions}{a numeric value (default: 256) to indicate the number of dimensions to shorten the embeddings size (see: https://platform.openai.com/docs/guides/embeddings). This parameter only works for the \code{text-embedding-3-large} model. For all embeddings dimensions, set the parameter to 3072.}
 }
 \value{
 A data.table with the embeddings as separate columns; one row represents one input text. See details.

@@ -70,17 +70,16 @@ rgpt_single = function(prompt_role = 'user'
              , 'gpt-3.5-turbo'
              , 'gpt-3.5-turbo-1106'
              , 'gpt-3.5-turbo-16k'
-             , 'gpt-3.5-turbo-0613'
-             , 'gpt-3.5-turbo-16k-0613'
              , 'gpt-4'
              , 'gpt-4-0125-preview'
              , 'gpt-4-turbo-preview'
              , 'gpt-4-turbo-2024-04-09'
              , 'gpt-4-turbo'
-             , 'gpt-4o')
+             , 'gpt-4o'
+             , 'gpt-4o-mini')
 
   if(!model %in% models){
-    message(paste0('The `model` is not on the list of supported models or contains a typo. For current models, have a look at: https://platform.openai.com/docs/models/gpt-4o'))
+    message(paste0('The `model` is not on the list of supported models or contains a typo. For current models, have a look at: https://platform.openai.com/docs/models.\n However, your model may still work as the package supports newer releases.'))
   }
 
 

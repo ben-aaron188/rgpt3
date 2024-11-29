@@ -14,6 +14,7 @@
 #' These vectors can be used for downstream tasks such as (vector) similarity calculations.
 #' @param input character that contains the text for which you want to obtain text embeddings from the specified GPT model
 #' @param model a character vector that indicates the [embedding model](https://beta.openai.com/docs/guides/embeddings/embedding-models); one of "text-embedding-3-large" (default), "text-embedding-3-small", "text-embedding-ada-002"
+#' @param dimensions a numeric value (default: 256) to indicate the number of dimensions to shorten the embeddings size (see: https://platform.openai.com/docs/guides/embeddings). This parameter only works for the `text-embedding-3-large` model. For all embeddings dimensions, set the parameter to 3072.
 #' @return A numeric vector (= the embedding vector)
 #' @examples
 #' # First authenticate with your API key via `rgpt_authenticate('pathtokey')`
@@ -30,10 +31,18 @@
 #' @export
 rgpt_single_embedding = function(input
                                , model = 'text-embedding-3-large'
+                               , dimensions = 256
                                ){
 
-  parameter_list = list(model = model
-                        , input = input)
+  if (model == 'text-embedding-3-large') {
+    parameter_list = list(model = model
+                          , input = input
+                          , dimensions = dimensions)
+  } else {
+    parameter_list = list(model = model
+                          , input = input)
+  }
+
 
   request_base = httr::POST(url = url.embeddings
                             , body = parameter_list

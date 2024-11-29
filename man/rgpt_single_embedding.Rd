@@ -4,12 +4,18 @@
 \alias{rgpt_single_embedding}
 \title{Obtains text embeddings for a single character (string) from OpenAI's GPT API}
 \usage{
-rgpt_single_embedding(input, model = "text-embedding-3-large")
+rgpt_single_embedding(
+  input,
+  model = "text-embedding-3-large",
+  dimensions = 256
+)
 }
 \arguments{
 \item{input}{character that contains the text for which you want to obtain text embeddings from the specified GPT model}
 
 \item{model}{a character vector that indicates the \href{https://beta.openai.com/docs/guides/embeddings/embedding-models}{embedding model}; one of "text-embedding-3-large" (default), "text-embedding-3-small", "text-embedding-ada-002"}
+
+\item{dimensions}{a numeric value (default: 256) to indicate the number of dimensions to shorten the embeddings size (see: https://platform.openai.com/docs/guides/embeddings). This parameter only works for the \code{text-embedding-3-large} model. For all embeddings dimensions, set the parameter to 3072.}
 }
 \value{
 A numeric vector (= the embedding vector)

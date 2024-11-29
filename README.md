@@ -1,14 +1,14 @@
 [![DOI](https://zenodo.org/badge/533971880.svg)](https://zenodo.org/badge/latestdoi/533971880)
 
-# `rgpt3` 
+# `rgpt3`
 
 **Making requests from R to the GPT models**
 
-_Note: this is a "community-maintained” package (i.e., not the official one). For the official OpenAI libraries (python and node.js endpoints), go to [https://beta.openai.com/docs/libraries/python-bindings](https://beta.openai.com/docs/libraries/python-bindings)_
+*Note: this is a "community-maintained" package (i.e., not the official one). For the official OpenAI libraries (python and node.js endpoints), go to <https://beta.openai.com/docs/libraries/python-bindings>*
 
-## Updated package version 
+## Updated package version
 
-_Read this if you used this package previously_
+*Read this if you used this package previously*
 
 With the latest release, the model has been re-designed to accommodate and reflect changes in OpenAI's completion structure.
 
@@ -18,20 +18,19 @@ To make interaction easier and less confusing, this R package now **wraps all fu
 
 In short: with the new package structure all GPT models can be used in one common wrapper and easier to adapt for future releases from OpenAI.
 
-
 ## Getting started
 
 You can follow these steps to get started with making requests and retrieving embeddings from the Open AI GPT language models.
 
-_If you already have an Open AI API key, you can skip step 1._
+*If you already have an Open AI API key, you can skip step 1.*
 
-1. Obtain your API key
+1.  Obtain your API key
 
-Go to [https://openai.com/api/](https://openai.com/api/), register for a free account and obtain your API key located at [https://beta.openai.com/account/api-keys](https://beta.openai.com/account/api-keys).
+Go to <https://openai.com/api/>, register for a free account and obtain your API key located at <https://beta.openai.com/account/api-keys>.
 
 Note that Open AI may rotate your key from time to time (but you should receive an email on your registered account if they do so).
 
-2. Set up the `access_key.txt` file
+2.  Set up the `access_key.txt` file
 
 Your access workflow for this package retrieves your API key from a local file. That file is easiest called `access_key.txt` (but any other file name would do). Important is that you use a `.txt` file with just the API key in there (i.e. no string quotation marks).
 
@@ -39,7 +38,7 @@ The path to that file (e.g. `/Users/me/directory1/access_key.txt`) is needed for
 
 When using a version control workflow, make sure `access_key.txt` is in the `.gitignore` file (i.e., so your access code is not visible on a GitHub repo). If you use the package without any version control, you do not need to set a `.gitignore` file.
 
-3. Install the `rgpt3` package
+3.  Install the `rgpt3` package
 
 The easiest way to use the package (before its CRAN release) is:
 
@@ -48,7 +47,7 @@ devtools::install_github("ben-aaron188/rgpt3")
 library(rgpt3)
 ```
 
-4. Run the test workflow
+4.  Run the test workflow
 
 Once the package is installed, you will typically run this work flow:
 
@@ -58,7 +57,7 @@ Get the path to your access key file and run the authentication with: `rgpt_auth
 
 **Make the test request:**
 
-You can run the test function below, which sends a simple request (here: the instruction to "Write a story about R Studio:") to the API and returns the output in the format used in this package (i.e., `list[[1]]` --> prompt and output, `list[[2]]` = meta information).
+You can run the test function below, which sends a simple request (here: the instruction to "Write a story about R Studio:") to the API and returns the output in the format used in this package (i.e., `list[[1]]` --\> prompt and output, `list[[2]]` = meta information).
 
 ```{r}
 rgpt_test_completion()
@@ -76,19 +75,17 @@ Error: `Error in core_output$gpt_content[i] ... replacement has length zero`
 
 This error is telling you that the call made to the API was not successful. This should already fail when you run the `rgpt_test_completion()` function. There are several things that can cause this, so best check the below if you get this error (in that order):
 
-1. Did you run the authentication properly to your API key with `rgpt_authenticate("/Users/.../access_key.txt")` (the path can take any form as long as you point it to a file (here called: `access_key.txt`) where your API key is located
-1. Does the file with your API key (e.g., `access_key.txt`) contain a newline after the API? It should contain a newline, so add one if this is missing.
-1. Is your free API limit from OpenAI still within the valid period (this is usually one month)?
-1. Are you still within the actual API limit (whether you use a free account or a paid one)?
-1. Does your API key have access to the model that you seek to use?
+1.  Did you run the authentication properly to your API key with `rgpt_authenticate("/Users/.../access_key.txt")` (the path can take any form as long as you point it to a file (here called: `access_key.txt`) where your API key is located
+2.  Does the file with your API key (e.g., `access_key.txt`) contain a newline after the API? It should contain a newline, so add one if this is missing.
+3.  Is your free API limit from OpenAI still within the valid period (this is usually one month)?
+4.  Are you still within the actual API limit (whether you use a free account or a paid one)?
+5.  Does your API key have access to the model that you seek to use?
 
 If you can answer "yes" to all of the above and the error persists, then please [open an issue](https://github.com/ben-aaron188/rgpt3/issues) so this can be looked into.
 
-
-
 ## Core functions
 
-Supported models as per 21 May 2024 (see [https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo](https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo):
+Supported models as per 21 May 2024 (see <https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo>:
 
 ```{r}
 models = c('gpt-3.5-turbo-0125'
@@ -103,19 +100,16 @@ models = c('gpt-3.5-turbo-0125'
            , 'gpt-4o')
 ```
 
-
-
 Since v1.0 `rgpt3` is structured into the following functions:
 
-- Making _standard_ requests (i.e. prompting the GPT models)
-    - single requests: `rgpt_single()`
-    - make multiple prompt-based requests from a source data.frame or data.table: `rgpt()`
-- Obtain embeddings
-    - obtain embeddings for a single text input: `rgpt_single_embedding`
-    - obtain embeddings for multiple texts from a source data.frame or data.table: `rgpt_embeddings()`
+-   Making *standard* requests (i.e. prompting the GPT models)
+    -   single requests: `rgpt_single()`
+    -   make multiple prompt-based requests from a source data.frame or data.table: `rgpt()`
+-   Obtain embeddings
+    -   obtain embeddings for a single text input: `rgpt_single_embedding`
+    -   obtain embeddings for multiple texts from a source data.frame or data.table: `rgpt_embeddings()`
 
-
-_A previous version of the package focused on the GPT-3 model only and used a now deprecated request structure for text completions._
+*A previous version of the package focused on the GPT-3 model only and used a now deprecated request structure for text completions.*
 
 The basic principle is that you can (and should) best use the more extensible `rgpt()` and `rgpt_embeddings()` functions as these allow you to make use of R's vectorisation. These do work even if you have only one prompt or text as input (see below). The difference between the extensible functions and their "single" counterparts is the input format.
 
@@ -124,7 +118,6 @@ This R package gives you full control over the parameters that the API contains.
 Note: this package enables you to use the core functionality of all current GPT models. This includes ChatGPT: all model requests are run through the chat completions now with recent updates on OpenAI's side. There is no need to differentiate between "classic" text completion and the more recent approach of using chat completions.
 
 There are additional functionalities in the core API such as fine-tuning models (i.e., providing labelled data to update/retrain the existing model) and asking a GPT model to make edits to text input. These are not (yet) part of this package.
-
 
 ## Examples
 
@@ -138,9 +131,9 @@ The new [seed](https://platform.openai.com/docs/api-reference/chat/create#chat-c
 
 The basic form of the GPT API connector is via chat completion requests. These requests can be of various kinds including questions ("What is the meaning of life?"), text summarisation tasks, text generation tasks and many more. A whole list of examples is on the [Open AI examples page](https://beta.openai.com/examples).
 
-Think of requests as instructions you give the to model. You may also hear the instructions being referred to as _prompts_ and the task that a GPT model then fulfills as _completions_ (have a look at the API guide on [prompt design](https://beta.openai.com/docs/guides/completion/prompt-design)).
+Think of requests as instructions you give the to model. You may also hear the instructions being referred to as *prompts* and the task that a GPT model then fulfills as *completions* (have a look at the API guide on [prompt design](https://beta.openai.com/docs/guides/completion/prompt-design)).
 
-Compared to the earlier models (e.g., GPT-3), we send the requests with a **role** and **content** of the prompts. The role must be one of 'user', 'system' or 'assistant' and you essentially tell the model (all models are now essentially chat models) in which role the content you send is to be interpreted. The content is analogous to the standard prompts. The reason why the role is necessary is that it allows you provide a full back-and-forth conversational flow (e.g., [https://platform.openai.com/docs/guides/chat/introduction](https://platform.openai.com/docs/guides/chat/introduction)).
+Compared to the earlier models (e.g., GPT-3), we send the requests with a **role** and **content** of the prompts. The role must be one of 'user', 'system' or 'assistant' and you essentially tell the model (all models are now essentially chat models) in which role the content you send is to be interpreted. The content is analogous to the standard prompts. The reason why the role is necessary is that it allows you provide a full back-and-forth conversational flow (e.g., <https://platform.openai.com/docs/guides/chat/introduction>).
 
 **Example 1: making a single completion request**
 
@@ -156,10 +149,9 @@ example_1 = rgpt_single(prompt_role = 'user'
 
 The returned list contains the actual instruction + output in `example_1[[1]]` and meta information about your request in `example_1[[2]]`.
 
-A verbatim excerpt of the produced output (from the `example_1[[1]]$gpt_content` column) here is: 
+A verbatim excerpt of the produced output (from the `example_1[[1]]$gpt_content` column) here is:
 
 > Ah, human nature, our ceaseless Achilles' heel, draped cunningly in the tinsel of rational calling and yet hilariously predictable! Ever ponder why history's forefront is marked, not with lessons thoroughly learned, but with Fata Morganas of enlightenment decked so tantalizingly on the horizon we half believe our betterment might be just a few paces ahead? Indulge older veins, dictated rather by life's foul turns than any whip of hopefurled saplings believing in [...]
-
 
 **Example 2: multiple prompts**
 
@@ -204,8 +196,6 @@ The output will show the actual completions in `example_2[[1]]`, the meta inform
 1217:     5           For -4.265508e-02      C
 ```
 
-
-
 ### Embeddings
 
 Here we load the data that comes with the package:
@@ -216,7 +206,6 @@ data("travel_blog_data")
 
 The dataset is now available in your environment as `travel_blog_data`. The column (`travel_blog_data$gpt_content`) contains ten texts written by GPT-4 (instructed to: "Write a travel blog about a dog's journey through the UK:").
 
-
 **Example 1: get embeddings for a single text**
 
 We can ask the model to retrieve embeddings for [text similarity](https://beta.openai.com/docs/guides/embeddings/similarity-embeddings) for a single text as follows:
@@ -224,10 +213,19 @@ We can ask the model to retrieve embeddings for [text similarity](https://beta.o
 ```{r}
 # we just take the first text here as a single text example
 my_text = travel_blog_data$gpt_content[1]
-my_embeddings = rgpt_single_embedding(input = my_text)
+my_embeddings = rgpt_single_embedding(input = my_text, dimensions = 3072)
 length(my_embeddings)
 # 3072 (since the default model uses the 3072-dimensional V3 (large) embeddings model)
+```
 
+For the shortened embeddings size:
+
+```{r}
+```{r}
+my_embeddings_short = rgpt_single_embedding(input = my_text, dimensions = 256)
+length(my_embeddings_short)
+# 256 (since we now use the shortened version with vector 256 dimensions)
+```
 ```
 
 
@@ -235,23 +233,19 @@ length(my_embeddings)
 
 Now we can do the same example with the full `travel_blog_data` dataset:
 
-
 ```{r}
 multiple_embeddings = rgpt_embeddings(input_var = travel_blog_data$gpt_content
                                       , id_var = travel_blog_data$n)
 dim(multiple_embeddings)
 
-# [1]    10 3073 # because we have ten rows of 3072 columns each (by default 3072 embeddings elements plus 1 id variable)
+# [1]    10 257 # because we have ten rows of 257 columns each (by default 256 embeddings elements in the shortened vector version plus 1 id variable)
 ```
-
-
 
 ## Cautionary note
 
-**Read this:** using any of the GPT models is not free, so any interaction with the model(s) is counted towards your token quota. You can find details about Open AI's pricing model at [https://openai.com/api/pricing/](https://openai.com/api/pricing/).
+**Read this:** using any of the GPT models is not free, so any interaction with the model(s) is counted towards your token quota. You can find details about Open AI's pricing model at <https://openai.com/api/pricing/>.
 
 You receive a reasonable credit for free and do not need to provide any payment information for the first interactions with the model(s). Once your token quota nears its end, Open AI will let you know. Your usage is traceable in your Open AI account dashboard.
-
 
 ## Support and contributions
 
@@ -261,20 +255,21 @@ You are free to make contributions to the package via pull requests. If you do s
 
 ## Changelog/updates
 
-- [update] 21 May 2024: The new `gpt-4o` model is supported and is now the **default model** for chat completion requests
-- [minor fix] 18 Apr 2024: updated model list, fixed default model in test completion function to 'gpt-3.5-turbo-0125'
-- [update] 8 Feb 2024: the output now returns the selected tokens and log probabilities in a new (third) output slot.
-- [new major release] 7 Feb 2024: general wrapper function for recent GPT models (i.e., 3.5 and 4) with new function `rgpt(...)`; seed control for reproducibility; updated embeddings function with `rgpt_embeddings(...)`
-- [small change] 24 Mar 2023: included error handling for httr requests as per [https://github.com/ben-aaron188/rgpt3/pull/7](https://github.com/ben-aaron188/rgpt3/pull/7)
-- [new release] 5 Mar 2023: the package now supports ChatGPT 
-- [update] 30 Jan 2023: added error shooting for API call errors
-- [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
-- [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
-- [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
+-   [update] 30 Nov 2024: removed deprecated models (`gpt-3.5-turbo-0613`, `gpt-3.5-turbo-16k-0613`), added `gpt-4o` model to model list (the model was previously already supported), added embeddings dimension reduction parameter (`dimensions`) to embeddings model and set default size to 256.
+-   [update] 21 May 2024: The new `gpt-4o` model is supported and is now the **default model** for chat completion requests
+-   [minor fix] 18 Apr 2024: updated model list, fixed default model in test completion function to 'gpt-3.5-turbo-0125'
+-   [update] 8 Feb 2024: the output now returns the selected tokens and log probabilities in a new (third) output slot.
+-   [new major release] 7 Feb 2024: general wrapper function for recent GPT models (i.e., 3.5 and 4) with new function `rgpt(...)`; seed control for reproducibility; updated embeddings function with `rgpt_embeddings(...)`
+-   [small change] 24 Mar 2023: included error handling for httr requests as per <https://github.com/ben-aaron188/rgpt3/pull/7>
+-   [new release] 5 Mar 2023: the package now supports ChatGPT
+-   [update] 30 Jan 2023: added error shooting for API call errors
+-   [update] 23 Dec 2022: the embeddings functions now default to the second generation embeddings "text-embedding-ada-002".
+-   [minor fix] 3 Dec 2022: included handling for encoding issues so that `rbindlist` uses `fill=T` (in `gpt3_completions(...)`)
+-   [update] 29 Nov 2022: the just released [davinci-003 model](https://beta.openai.com/docs/models/gpt-3) for text completions is now the default model for the text completion functions.
 
 ## Citation
 
-```
+```         
 @software{Kleinberg_rgpt3_Making_requests_2022,
     author = {Kleinberg, Bennett},
     doi = {10.5281/zenodo.7327667},

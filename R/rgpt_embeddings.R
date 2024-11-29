@@ -15,6 +15,7 @@
 #' @param input_var character vector that contains the texts for which you want to obtain text embeddings from the specified GPT model
 #' @param id_var (optional) character vector that contains the user-defined ids of the prompts. See details.
 #' @param param_model a character vector that indicates the [embedding model](https://beta.openai.com/docs/guides/embeddings/embedding-models); one of "text-embedding-3-large" (default), "text-embedding-3-small", "text-embedding-ada-002"
+#' @param param_dimensions a numeric value (default: 256) to indicate the number of dimensions to shorten the embeddings size (see: https://platform.openai.com/docs/guides/embeddings). This parameter only works for the `text-embedding-3-large` model. For all embeddings dimensions, set the parameter to 3072.
 #' @return A data.table with the embeddings as separate columns; one row represents one input text. See details.
 #' @examples
 #' # First authenticate with your API key via `rgpt_authenticate('pathtokey')`
@@ -34,7 +35,8 @@
 #'@export
 rgpt_embeddings = function(input_var
                                 , id_var
-                                , param_model = 'text-embedding-3-large'){
+                                , param_model = 'text-embedding-3-large'
+                                , param_dimensions = 256){
 
   data_length = length(input_var)
   if(missing(id_var)){
