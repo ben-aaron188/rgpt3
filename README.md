@@ -85,19 +85,18 @@ If you can answer "yes" to all of the above and the error persists, then please 
 
 ## Core functions
 
-Supported models as per 21 May 2024 (see <https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo>:
+Supported models as per 30 Nov 2024 (see <https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo>:
 
 ```{r}
 models = c('gpt-3.5-turbo-0125'
            , 'gpt-3.5-turbo'
            , 'gpt-3.5-turbo-1106'
            , 'gpt-3.5-turbo-16k'
-           , 'gpt-3.5-turbo-0613'
-           , 'gpt-3.5-turbo-16k-0613'
            , 'gpt-4'
            , 'gpt-4-0613'
            , 'gpt-4-0125-preview'
-           , 'gpt-4o')
+           , 'gpt-4o'
+           , 'gpt-4o-mini')
 ```
 
 Since v1.0 `rgpt3` is structured into the following functions:
